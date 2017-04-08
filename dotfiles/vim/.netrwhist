@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/Jannik/.ssh'
+let g:netrw_dirhist_2='/Users/Jannik/.electron'
+let g:netrw_dirhist_3='/Users/Jannik/.bash_profile'
+let g:netrw_dirhist_4='/Users/Jannik/.atom'
+let g:netrw_dirhist_5='/Users/Jannik/.vim'

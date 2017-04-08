@@ -1,0 +1,68 @@
+set nocompatible      " use vim not vi
+
+" Vundle
+filetype off          " required for Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just 
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to 
+" auto-approve removal
+
+" Keybindings to jk 
+:imap jk <Esc>
+set timeoutlen=150
+
+" Relative line numbers
+set relativenumber
+set number
+
+set mouse=a
+
+" Allow hjkl movement through wrapped lines
+noremap <buffer> <silent> k gk
+noremap <buffer> <silent> j gj
+noremap <buffer> <silent> 0 g0
+noremap <buffer> <silent> $ g$
+
+syntax on            	" this is needed to see syntax
+set background=light
+set ls=2            	" always show status line
+set hlsearch        	" highlight searches
+set incsearch       	" do incremental searching
+set ruler           	" show the cursor position all the time
+set visualbell t_vb=  " turn off error beep/flash
+set ignorecase        " ignore case while searching
+set number            " put numbers on side
+set ts=2							" set the tabs to two spaces
+set expandtab
+set shiftwidth=2
+set tabstop=2
+set backspace=indent,eol,start
+set completeopt=longest,menu,preview
+set autoindent
+set scrolloff=5               " keep at least x lines above/below
+set sidescrolloff=5           " keep at least x lines left/right
+set hidden                    " this will go along"
+set encoding=utf-8
+
+" Allow line-breaking and word wrapping
+set wrap
+set linebreak
+set fo=tcrwa textwidth=80 " Autoformats display line to new line
+
+" Set Enter to exit search highlighting
+nnoremap <silent> <CR> :nohlsearch<CR>
+
+filetype plugin on
+filetype plugin indent on
+" let mapleader = ","           " Remap leader to comma"
+let base16colorspace=256
+ 
