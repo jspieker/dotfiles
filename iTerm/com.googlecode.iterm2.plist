@@ -71,7 +71,7 @@
 	<key>HotKeyTogglesWindow</key>
 	<false/>
 	<key>Hotkey</key>
-	<true/>
+	<false/>
 	<key>HotkeyChar</key>
 	<integer>63241</integer>
 	<key>HotkeyCode</key>
@@ -133,17 +133,17 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>33 662 445 77 0 0 1920 1058 </string>
+	<string>33 528 445 77 0 0 1920 1058 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>519 190 606 456 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 509 620 392 0 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>0 576 918 381 0 0 1920 1058 </string>
+	<string>460 495 958 433 0 0 1920 1058 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>223 116 1442 842 0 0 1920 1058 </string>
+	<string>0 51 954 1007 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>218 310 730 452 0 0 1920 1058 </string>
 	<key>New Bookmarks</key>
@@ -1722,7 +1722,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>E5F16858-7BF8-4CE6-995D-C1C8BAD54E2B</string>
 	<key>NoSyncLastTipTime</key>
-	<real>513286309.93866301</real>
+	<real>513415866.54788601</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1736,6 +1736,7 @@
 		<string>000</string>
 		<string>0000</string>
 		<string>0001</string>
+		<string>0002</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -1747,6 +1748,8 @@
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>0</integer>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PassOnControlClick</key>
 	<false/>
 	<key>PasteFromClipboard</key>
@@ -1786,6 +1789,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/Jannik/Development/config/iTerm</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
