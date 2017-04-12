@@ -14,10 +14,17 @@ set wrap
 set linebreak
 
 " Autoformats display line to new line
-" set fo=tcrwa textwidth=80
+set fo=tcrwa textwidth=80
 
 " Allow mouse control
 set mouse=a
+
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+
+" Display all matching files when we tab complete
+set wildmenu
 
 " Allow hjkl movement through wrapped lines
 noremap <buffer> <silent> k gk
@@ -32,6 +39,7 @@ map <F5> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 syntax on
+filetype plugin on
 set background=light
 set ls=2            	" always show status line
 set hlsearch        	" highlight searches
