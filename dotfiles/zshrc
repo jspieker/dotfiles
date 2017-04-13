@@ -2,10 +2,10 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Suppress machine name in zsh
-DEFAULT_USER="Jannik"
+DEFAULT_USER="jannik"
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/Jannik/.oh-my-zsh
+export ZSH=/home/jannik/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -54,7 +54,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git safe-paste catimg osx)
+plugins=(git safe-paste)
 
 source $ZSH/oh-my-zsh.sh
 

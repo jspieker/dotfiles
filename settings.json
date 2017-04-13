@@ -1,0 +1,23 @@
+{
+    "typescript.check.tscVersion": false,
+    "vim.insertModeKeyBindings": [
+       {
+		"before": ["j", "k"],
+		"after": ["<esc>"]
+	}
+	],
+    "vim.useCtrlKeys": true,
+    "vim.handleKeys":{
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-d>": true,
+        "<C-u>": true
+    },
+    "vim.searchHighlightColor": "rgba(150, 0, 0, 1))",
+    "vim.useSystemClipboard": true,
+    "vim.timeout": 150,
+    "editor.lineNumbers": "relative",
+    "workbench.colorTheme": "Default Light+"
+}
+
+
