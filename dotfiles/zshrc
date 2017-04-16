@@ -2,10 +2,10 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Suppress machine name in zsh
-DEFAULT_USER="jannik"
+DEFAULT_USER="Jannik"
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/jannik/.oh-my-zsh
+export ZSH=/Users/Jannik/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.

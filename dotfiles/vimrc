@@ -39,8 +39,9 @@ map <F5> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 syntax on
+colorscheme onedark
 filetype plugin on
-set background=light
+" set background=dark
 set ls=2            	" always show status line
 set hlsearch        	" highlight searches
 set incsearch       	" do incremental searching
@@ -64,6 +65,6 @@ nnoremap <silent> <CR> :nohlsearch<CR>
 
 " let mapleader = ","           " Remap leader to comma"
 let base16colorspace=256
- 
+
 execute pathogen#infect()
 call pathogen#helptags()
