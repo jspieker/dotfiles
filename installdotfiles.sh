@@ -3,9 +3,9 @@
 # Create symlinks from homedir to any desired dotfiles
 ##################
 
-dir=~/Documents/config/dotfiles
+dir=~/Development/dotfiles/dotfiles
 backupdir=~/.dotfiles_backup
-files="bash_profile vimrc zshrc oh-my-zsh vim atom"
+files="bash_profile vimrc zshrc vim"
 
 echo "Creating $backupdir etc for backup of any existing dotfiles in ~"
 mkdir -p $backupdir
