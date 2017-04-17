@@ -8,6 +8,8 @@ My custom dotfiles for vim and common editors.
   theme.
 * [Menlo for Powerline](https://github.com/abertsch/Menlo-for-Powerline) because 
   the agnoster theme requires a patched font to properly display some elements.
+* [NERDTree](https://github.com/scrooloose/nerdtree) to display your file system 
+  in vim.
 
 ## Installation
 
