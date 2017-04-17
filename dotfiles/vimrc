@@ -38,10 +38,14 @@ map <F5> :NERDTreeToggle<CR>
 " Autoclose NERDTree if it is last open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Set Atom color scheme and fix background color
 syntax on
 colorscheme onedark
+highlight Normal ctermbg=NONE
+highligh nonText ctermbg=NONE
+
 filetype plugin on
-" set background=dark
+
 set ls=2            	" always show status line
 set hlsearch        	" highlight searches
 set incsearch       	" do incremental searching
