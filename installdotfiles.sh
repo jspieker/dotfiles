@@ -4,7 +4,7 @@
 ##################
 
 dir=~/Documents/config/dotfiles
-backupdir=~/dotfiles_backup
+backupdir=~/.dotfiles_backup
 files="bash_profile vimrc zshrc oh-my-zsh vim atom"
 
 echo "Creating $backupdir etc for backup of any existing dotfiles in ~"
