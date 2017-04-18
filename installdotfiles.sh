@@ -9,9 +9,7 @@ files="bash_profile vimrc zshrc vim"
 
 echo "Creating $backupdir etc for backup of any existing dotfiles in ~"
 mkdir -p $backupdir
-mkdir -p $backupdir .oh-my-zsh
 mkdir -p $backupdir .vim
-mkdir -p $backupdir .atom
 
 echo "Changing to the $dir directory"
 cd $dir

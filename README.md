@@ -14,8 +14,8 @@ My custom dotfiles for vim and common editors.
 ## Installation
 
 Run `sh installdotfiles.sh` to both backup your existing dotfiles to 
-`~/dotfiles_backup` and place the dotfiles from this repository in your `~`.  
-You probably need to edit installdotfiles.sh first in order to match your folder 
+`~/dotfiles_backup` and place the dotfiles from this repository in your `~`. You 
+probably need to edit installdotfiles.sh first in order to match your folder 
 structure. Furthermore, add `iTerm/com.googlecode.iterm2.plist` to your iTerm 
 preferences.
 
@@ -24,6 +24,5 @@ preferences.
 * .bash_profile
 * .vimrc
 * .zshrc
-* .oh-my-zsh
 * .vim
 

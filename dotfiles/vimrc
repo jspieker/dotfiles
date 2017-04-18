@@ -1,7 +1,7 @@
 " use vim not vi
 set nocompatible
 
-" Keybindings to jk 
+" Keybindings
 :imap jk <Esc>
 set timeoutlen=150
 
