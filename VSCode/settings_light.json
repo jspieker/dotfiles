@@ -1,16 +1,22 @@
 {
-    "editor.fontSize": 16,
+    "editor.fontSize": 18,
+    "editor.renderWhitespace": "boundary",
     "typescript.check.tscVersion": false,
     "workbench.colorTheme": "RealGithub",
     "workbench.iconTheme": "material-icon-theme",
     "editor.cursorBlinking": "smooth",
     "terminal.integrated.fontFamily": "Menlo for Powerline",
+    "editor.minimap.enabled": true,
 
     "vim.insertModeKeyBindings": [
        {
 		"before": ["j", "k"],
 		"after": ["<esc>"]
-	}
+       },
+       {
+           "before": ["<enter>"],
+           "after": ["i", "<enter", "i"]
+       }
 	],
     "vim.useCtrlKeys": true,
     "vim.handleKeys":{
@@ -25,21 +31,23 @@
     "vim.useSystemClipboard": true,
     "vim.timeout": 150,
     "vim.showcmd": true,
+    "editor.lineNumbers": "relative",
     "vim.statusBarColorControl": true,
     "vim.statusBarColors" : {
-        "normal": "#005f5f",
+        "normal": "#007ACC",
         "insert": "#5f0000",
         "visual": "#5f00af",
         "visualline": "#005f87",
         "visualblock": "#86592d",
         "replace": "#000000"
     },
-    "editor.lineNumbers": "relative",
     "workbench.colorCustomizations": {
-        "statusBar.background": "#005f5f",
-        "statusBar.noFolderBackground": "#005f5f",
-        "statusBar.debuggingBackground": "#005f5f"
-    }
+        "statusBar.background": "#007ACC",
+        "statusBar.noFolderBackground": "#007ACC",
+        "statusBar.debuggingBackground": "#007ACC"
+    },
+    "workbench.activityBar.visible": true,
+    "todohighlight.isEnable": true
 }
 
 
