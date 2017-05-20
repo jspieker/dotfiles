@@ -14,7 +14,7 @@ set wrap
 set linebreak
 
 " Autoformats display line to new line
-set fo=tcrwa textwidth=80
+" set fo=tcrwa textwidth=80
 
 " Allow mouse control
 set mouse=a
