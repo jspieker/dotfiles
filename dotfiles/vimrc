@@ -1,6 +1,17 @@
 " use vim not vi
 set nocompatible
 
+" vim-plug. Call :PlugInstall, :PlugUpdate, :PlugClean
+call plug#begin('~/.vim/plugged')
+  Plug 'scrooloose/nerdtree'      " File explorer
+  Plug 'vim-airline/vim-airline'  " Bottom status bar
+  Plug 'joshdick/onedark.vim'     " Color Scheme
+  Plug 'sheerun/vim-polyglot'     " Language Packs
+  Plug 'airblade/vim-gitgutter'   " Show git diff in sidebar
+  Plug 'yggdroot/indentline'      " Show indendations
+"  Plug 'valloric/youcompleteme'   " Autocompletion
+call plug#end()
+
 " Keybindings
 :imap jk <Esc>
 set timeoutlen=150
@@ -41,6 +52,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Set Atom color scheme and fix background color
 syntax on
 colorscheme onedark
+let g:indentLine_char = '⎸'       " Use this char for indentations
+let g:airline_powerline_fonts = 1 " Allow vim-airline to use Powerline Fonts
+let g:airline_theme='onedark'
 highlight Normal ctermbg=NONE
 highligh nonText ctermbg=NONE
 
@@ -69,6 +83,3 @@ nnoremap <silent> <CR> :nohlsearch<CR>
 
 " let mapleader = ","           " Remap leader to comma"
 let base16colorspace=256
-
-execute pathogen#infect()
-call pathogen#helptags()
