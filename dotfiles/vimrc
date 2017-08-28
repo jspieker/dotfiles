@@ -1,15 +1,32 @@
-" use vim not vi
-set nocompatible
+set nocompatible " use vim not vi
 
 " vim-plug. Call :PlugInstall, :PlugUpdate, :PlugClean
 call plug#begin('~/.vim/plugged')
-  Plug 'scrooloose/nerdtree'      " File explorer
-  Plug 'vim-airline/vim-airline'  " Bottom status bar
-  Plug 'joshdick/onedark.vim'     " Color Scheme
-  Plug 'sheerun/vim-polyglot'     " Language Packs
-  Plug 'airblade/vim-gitgutter'   " Show git diff in sidebar
-  Plug 'yggdroot/indentline'      " Show indendations
-"  Plug 'valloric/youcompleteme'   " Autocompletion
+
+" Edit
+  Plug 'tpope/vim-surround'         " Surround selections 
+  Plug 'tpope/vim-commentary'       " Quick commenting
+
+" Browsing
+  Plug 'scrooloose/nerdtree'        " File explorer
+
+" Git
+  Plug 'airblade/vim-gitgutter'     " Show git diff in sidebar
+
+" Languages
+  Plug 'sheerun/vim-polyglot'       " Language Packs for syntax coloring
+
+" Look & feel
+  Plug 'joshdick/onedark.vim'       " Color Scheme
+  Plug 'vim-airline/vim-airline'    " Bottom status bar
+  Plug 'yggdroot/indentline'        " Show indendations
+  Plug 'lilydjwg/colorizer'         " Preview colors inline
+  Plug 'itchyny/vim-cursorword'     " Underline word below cursor
+
+" To be added
+  " Plug 'vim-syntastic/syntastic'  " Syntax checking
+  " Plug 'mbbill/undotree'          " Visualize last edits
+  " Plug 'valloric/youcompleteme'   " Autocompletion
 call plug#end()
 
 " Keybindings
@@ -43,7 +60,7 @@ noremap <buffer> <silent> j gj
 noremap <buffer> <silent> 0 g0
 noremap <buffer> <silent> $ g$
 
-" Map CTRL+N to NERDTree
+" Toggle NERDTree
 map <F5> :NERDTreeToggle<CR>
 
 " Autoclose NERDTree if it is last open window
@@ -83,3 +100,4 @@ nnoremap <silent> <CR> :nohlsearch<CR>
 
 " let mapleader = ","           " Remap leader to comma"
 let base16colorspace=256
+

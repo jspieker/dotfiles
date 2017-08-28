@@ -2,6 +2,8 @@
 
 My custom dotfiles for vim and common editors.
 
+![terminal preview](http://imgur.com/tvq3SkV.jpg)
+
 ## Requirements
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) for easy zsh plugin 
   management i.e. the [agnoster](https://github.com/agnoster/agnoster-zsh-theme) 
@@ -20,4 +22,3 @@ Run `sh installdotfiles.sh` to both backup your existing dotfiles to
 probably need to edit installdotfiles.sh first in order to match your folder 
 structure. Furthermore, add `iTerm/com.googlecode.iterm2.plist` to your iTerm 
 preferences.
-
