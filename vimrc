@@ -33,6 +33,7 @@ call plug#begin('~/.vim/plugged')
 " Look & feel
   Plug 'reedes/vim-thematic'            " Better theme management
   Plug 'vim-airline/vim-airline-themes' " Airline Themes
+  Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim'}    " Color Scheme
   Plug 'NLKNguyen/papercolor-theme'     " Color Scheme
   Plug 'andbar-ru/vim-unicon'           " Color Scheme
   Plug 'joshdick/onedark.vim'           " Color Scheme
@@ -124,7 +125,7 @@ let g:thematic#themes = {
       \  'onedark': {
       \    'colorscheme': 'onedark',
       \    'airline-theme': 'onedark',
-      \    'background': 'light',
+      \    'background': 'dark',
       \    'laststatus': 2,
       \    'typeface': 'Menlo for Powerline',
       \    'font-size': 16,
@@ -132,6 +133,15 @@ let g:thematic#themes = {
       \    },
       \  'papercolor_light': {
       \    'colorscheme': 'PaperColor',
+      \    'airline-theme': 'papercolor',
+      \    'background': 'light',
+      \    'laststatus': 2,
+      \    'typeface': 'Menlo for Powerline',
+      \    'font-size': 16,
+      \    'linespace': 2,
+      \    },
+      \  'tomorrow': {
+      \    'colorscheme': 'Tomorrow',
       \    'airline-theme': 'papercolor',
       \    'background': 'light',
       \    'laststatus': 2,
