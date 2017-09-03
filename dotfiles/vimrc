@@ -1,11 +1,11 @@
-set nocompatible " use vim not vi
-set ttyfast
+set nocompatible                        " use vim not vi
+set ttyfast                             " Assume fast terminal connection (smoothens scrolling)
 
 " ======================================================================
 " Vim-Plug (:PlugInstall, :PlugUpdate, :PlugClean)
 " ======================================================================
 
-" Autoinstall if not installed
+" Autoinstall vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -59,26 +59,27 @@ call plug#end()
 :imap jk <Esc>
 set timeoutlen=150
 
-" Relative line numbers
-set relativenumber
-set number
+" Toggle NERDTree
+map <F5> :NERDTreeToggle<CR> 
 
-" Allow line-breaking and word wrapping
-set wrap
-set linebreak
+" Set Enter to exit search highlighting
+nnoremap <silent> <CR> :nohlsearch<CR>
 
-" Autoformats display line to new line
-" set fo=tcrwa textwidth=80
+" Autoclose NERDTree if it is last open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Allow mouse control
-set mouse=a
 
-" Search down into subfolders
-" Provides tab-completion for all file-related tasks
-set path+=**
 
-" Display all matching files when we tab complete
-set wildmenu
+" Misc
+
+set relativenumber            " Relative line numbers
+set number                    " Activate line numbers
+set wrap                      " Allow line-breaking
+set linebreak                 " Allow word wrapping
+" set fo=tcrwa textwidth=80   " Autoformats display line to new line
+set mouse=a                   " Allow mouse control
+set path+=**                  " Search down into subfolders
+set wildmenu                  " Display all matching files when tab complete
 
 " Allow hjkl movement through wrapped lines
 noremap <buffer> <silent> k gk
@@ -86,53 +87,38 @@ noremap <buffer> <silent> j gj
 noremap <buffer> <silent> 0 g0
 noremap <buffer> <silent> $ g$
 
-" Toggle NERDTree
-map <F5> :NERDTreeToggle<CR>
-
-" Autoclose NERDTree if it is last open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 filetype plugin on
 
-set hlsearch        	" highlight searches
-set incsearch       	" do incremental searching
-set ruler           	" show the cursor position all the time
-set visualbell t_vb=  " turn off error beep/flash
-set ignorecase        " ignore case while searching
-set ts=2							" set the tabs to two spaces
+set hlsearch        	        " Highlight searches
+set incsearch       	        " Do incremental searching
+set ruler           	        " Show the cursor position all the time
+set visualbell t_vb=          " Turn off error beep/flash
+set ignorecase                " Ignore case while searching
+set ts=2							        " Set the tabs to two spaces
 set expandtab
 set shiftwidth=2
 set tabstop=2
 set backspace=indent,eol,start
 set completeopt=longest,menu,preview
 set autoindent
-set scrolloff=5               " keep at least x lines above/below
-set sidescrolloff=5           " keep at least x lines left/right
-set hidden                    " this will go along"
+set scrolloff=5               " Keep at least x lines above/below
+set sidescrolloff=5           " Keep at least x lines left/right
+set hidden                    " This will go along"
 set encoding=utf-8
 
-" Set Enter to exit search highlighting
-nnoremap <silent> <CR> :nohlsearch<CR>
-
-" let mapleader = ","           " Remap leader to comma"
+" let mapleader = ","         " Remap leader to comma"
 let base16colorspace=256
 
 " ======================================================================
-" Themes
+" Themes (:Thematic)
 " ======================================================================
-syntax on
-let g:indentLine_char = '⎸'       " Use this char for indentations
+syntax on                             " Enable syntax highlighting
+let g:indentLine_char = '⎸'           " Use this char for indentations
 highlight Normal ctermbg=NONE
-highligh nonText ctermbg=NONE
+highlight nonText ctermbg=NONE
 
-" colorscheme onedark
-" colorscheme PaperColor
-" set background=light
-let g:airline_powerline_fonts = 1 " Allow vim-airline to use Powerline Fonts
-" let g:airline_theme='onedark'
-" let g:airline_theme='papercolor'
-let g:thematic#theme_name = 'onedark'
-
+let g:airline_powerline_fonts = 1     " Allow vim-airline to use Powerline Fonts
+let g:thematic#theme_name = 'onedark' " Default Theme
 
 let g:thematic#themes = {
       \  'onedark': {

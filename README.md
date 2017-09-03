@@ -1,6 +1,6 @@
-# Dotfiles for Development
+# ~/.*
 
-My custom dotfiles for vim and common editors.
+My dotfiles for vim and common editors.
 
 ![terminal preview](http://imgur.com/tvq3SkV.jpg)
 
@@ -12,13 +12,3 @@ My custom dotfiles for vim and common editors.
   * Install z (for faster terminal navigation) with homebrew using `brew install z`
 * [Menlo for Powerline](https://github.com/abertsch/Menlo-for-Powerline) because 
   the agnoster theme requires a patched font to properly display some elements.
-* [NERDTree](https://github.com/scrooloose/nerdtree) to display your file system 
-  in vim.
-
-## Installation (**experimental**)
-
-Run `sh installdotfiles.sh` to both backup your existing dotfiles to 
-`~/dotfiles_backup` and place the dotfiles from this repository in your `~`. You 
-probably need to edit installdotfiles.sh first in order to match your folder 
-structure. Furthermore, add `iTerm/com.googlecode.iterm2.plist` to your iTerm 
-preferences.
