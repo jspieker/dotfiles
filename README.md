@@ -2,6 +2,8 @@
 
 My dotfiles for vim and common editors.
 
+Run `sh installdotfiles.sh` to backup your existing dotfiles and replace them with symlinks from this repo.
+
 ![terminal preview](http://imgur.com/tvq3SkV.jpg)
 
 ## Requirements

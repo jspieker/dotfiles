@@ -3,7 +3,7 @@
 # Create symlinks from homedir to any desired dotfiles
 ##################
 
-dir=~/Development/dotfiles/dotfiles
+dir=`pwd`
 backupdir=~/.dotfiles_backup
 files="bash_profile vimrc zshrc vim"
 
