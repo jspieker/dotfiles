@@ -1,33 +1,59 @@
 set nocompatible " use vim not vi
+set ttyfast
 
-" vim-plug. Call :PlugInstall, :PlugUpdate, :PlugClean
+" ======================================================================
+" Vim-Plug (:PlugInstall, :PlugUpdate, :PlugClean)
+" ======================================================================
+
+" Autoinstall if not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " Edit
-  Plug 'tpope/vim-surround'         " Surround selections 
-  Plug 'tpope/vim-commentary'       " Quick commenting
+  Plug 'tpope/vim-surround'             " Surround selections 
+  Plug 'tpope/vim-commentary'           " Quick commenting
+  Plug 'tpope/vim-speeddating'          " Better number incrementation
+  Plug 'tpope/vim-surround'             " Change surrounds
 
 " Browsing
-  Plug 'scrooloose/nerdtree'        " File explorer
+  Plug 'scrooloose/nerdtree'            " File explorer
 
 " Git
-  Plug 'airblade/vim-gitgutter'     " Show git diff in sidebar
+  Plug 'airblade/vim-gitgutter'         " Show git diff in sidebar
+  Plug 'tpope/vim-fugitive'             " Git wrapper
 
 " Languages
-  Plug 'sheerun/vim-polyglot'       " Language Packs for syntax coloring
+  Plug 'sheerun/vim-polyglot'           " Language Packs for syntax coloring
 
 " Look & feel
-  Plug 'joshdick/onedark.vim'       " Color Scheme
-  Plug 'vim-airline/vim-airline'    " Bottom status bar
-  Plug 'yggdroot/indentline'        " Show indendations
-  Plug 'lilydjwg/colorizer'         " Preview colors inline
-  Plug 'itchyny/vim-cursorword'     " Underline word below cursor
+  Plug 'reedes/vim-thematic'            " Better theme management
+  Plug 'vim-airline/vim-airline-themes' " Airline Themes
+  Plug 'NLKNguyen/papercolor-theme'     " Color Scheme
+  Plug 'andbar-ru/vim-unicon'           " Color Scheme
+  Plug 'joshdick/onedark.vim'           " Color Scheme
+  Plug 'vim-airline/vim-airline'        " Bottom status bar
+  Plug 'yggdroot/indentline'            " Show indendations
+  Plug 'lilydjwg/colorizer'             " Preview colors inline
+  Plug 'itchyny/vim-cursorword'         " Underline word below cursor
+
+" Experimental
+  Plug 'yuttie/comfortable-motion.vim'  " Smooth scrolling
+  Plug 'kien/rainbow_parentheses.vim'   " Rainbow Parentheses
+
+
 
 " To be added
   " Plug 'vim-syntastic/syntastic'  " Syntax checking
   " Plug 'mbbill/undotree'          " Visualize last edits
   " Plug 'valloric/youcompleteme'   " Autocompletion
 call plug#end()
+
+
 
 " Keybindings
 :imap jk <Esc>
@@ -66,18 +92,8 @@ map <F5> :NERDTreeToggle<CR>
 " Autoclose NERDTree if it is last open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Set Atom color scheme and fix background color
-syntax on
-colorscheme onedark
-let g:indentLine_char = '⎸'       " Use this char for indentations
-let g:airline_powerline_fonts = 1 " Allow vim-airline to use Powerline Fonts
-let g:airline_theme='onedark'
-highlight Normal ctermbg=NONE
-highligh nonText ctermbg=NONE
-
 filetype plugin on
 
-set ls=2            	" always show status line
 set hlsearch        	" highlight searches
 set incsearch       	" do incremental searching
 set ruler           	" show the cursor position all the time
@@ -100,4 +116,42 @@ nnoremap <silent> <CR> :nohlsearch<CR>
 
 " let mapleader = ","           " Remap leader to comma"
 let base16colorspace=256
+
+" ======================================================================
+" Themes
+" ======================================================================
+syntax on
+let g:indentLine_char = '⎸'       " Use this char for indentations
+highlight Normal ctermbg=NONE
+highligh nonText ctermbg=NONE
+
+" colorscheme onedark
+" colorscheme PaperColor
+" set background=light
+let g:airline_powerline_fonts = 1 " Allow vim-airline to use Powerline Fonts
+" let g:airline_theme='onedark'
+" let g:airline_theme='papercolor'
+let g:thematic#theme_name = 'onedark'
+
+
+let g:thematic#themes = {
+      \  'onedark': {
+      \    'colorscheme': 'onedark',
+      \    'airline-theme': 'onedark',
+      \    'background': 'light',
+      \    'laststatus': 2,
+      \    'typeface': 'Menlo for Powerline',
+      \    'font-size': 16,
+      \    'linespace': 2,
+      \    },
+      \  'papercolor_light': {
+      \    'colorscheme': 'PaperColor',
+      \    'airline-theme': 'papercolor',
+      \    'background': 'light',
+      \    'laststatus': 2,
+      \    'typeface': 'Menlo for Powerline',
+      \    'font-size': 16,
+      \    'linespace': 2,
+      \    },
+      \}
 
