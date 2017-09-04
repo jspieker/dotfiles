@@ -60,14 +60,8 @@ call plug#end()
 :imap jk <Esc>
 set timeoutlen=150
 
-" Toggle NERDTree
-map <F5> :NERDTreeToggle<CR> 
-
 " Set Enter to exit search highlighting
 nnoremap <silent> <CR> :nohlsearch<CR>
-
-" Autoclose NERDTree if it is last open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 
@@ -113,6 +107,22 @@ set encoding=utf-8
 let base16colorspace=256
 
 " ==================================================================================================
+" Nerdtree
+" ==================================================================================================
+
+let NERDTreeMinimalUI = 1     " Suppress 'Press ? for help' message
+
+" Toggle NERDTree
+map <F5> :NERDTreeToggle<CR> 
+
+" Autoclose NERDTree if it is last open window
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Auto open nerdtree if no file is specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" ==================================================================================================
 " Syntastic settings
 " ==================================================================================================
 
@@ -122,7 +132,7 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_typescript_checkers = ['tslint', 'tsc']
