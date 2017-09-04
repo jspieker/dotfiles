@@ -1,9 +1,9 @@
 set nocompatible                        " use vim not vi
 set ttyfast                             " Assume fast terminal connection (smoothens scrolling)
 
-" ======================================================================
+" ==================================================================================================
 " Vim-Plug (:PlugInstall, :PlugUpdate, :PlugClean)
-" ======================================================================
+" ==================================================================================================
 
 " Autoinstall vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -45,11 +45,11 @@ call plug#begin('~/.vim/plugged')
 " Experimental
   Plug 'yuttie/comfortable-motion.vim'  " Smooth scrolling
   Plug 'kien/rainbow_parentheses.vim'   " Rainbow Parentheses
+  Plug 'vim-syntastic/syntastic'        " Syntax checking
 
 
 
 " To be added
-  " Plug 'vim-syntastic/syntastic'  " Syntax checking
   " Plug 'mbbill/undotree'          " Visualize last edits
   " Plug 'valloric/youcompleteme'   " Autocompletion
 call plug#end()
@@ -71,7 +71,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 
 
-" Misc
+" ==================================================================================================
+" Basic settings
+" ==================================================================================================
 
 set relativenumber            " Relative line numbers
 set number                    " Activate line numbers
@@ -110,9 +112,24 @@ set encoding=utf-8
 " let mapleader = ","         " Remap leader to comma"
 let base16colorspace=256
 
-" ======================================================================
+" ==================================================================================================
+" Syntastic settings
+" ==================================================================================================
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_typescript_checkers = ['tslint', 'tsc']
+
+" ==================================================================================================
 " Themes (:Thematic)
-" ======================================================================
+" ==================================================================================================
 syntax on                             " Enable syntax highlighting
 let g:indentLine_char = '⎸'           " Use this char for indentations
 highlight Normal ctermbg=NONE
