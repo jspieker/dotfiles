@@ -13,6 +13,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+" General
+  Plug 'kien/ctrlp.vim'                 " Fuzzy finder
 
 " Edit
   Plug 'tpope/vim-surround'             " Surround selections 
@@ -55,16 +57,6 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 
-
-" Keybindings
-:imap jk <Esc>
-set timeoutlen=150
-
-" Set Enter to exit search highlighting
-nnoremap <silent> <CR> :nohlsearch<CR>
-
-
-
 " ==================================================================================================
 " Basic settings
 " ==================================================================================================
@@ -105,6 +97,34 @@ set encoding=utf-8
 
 " let mapleader = ","         " Remap leader to comma"
 let base16colorspace=256
+
+
+" ==================================================================================================
+" Keybindings
+" ==================================================================================================
+
+:imap jk <Esc>
+set timeoutlen=150
+
+" Set Enter to exit search highlighting
+nnoremap <silent> <CR> :nohlsearch<CR>
+
+" ==================================================================================================
+" CTRL+P (fuzzy search)
+" ==================================================================================================
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP' 
+
+" Ignore certain files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
+
 
 " ==================================================================================================
 " Nerdtree
