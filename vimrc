@@ -47,8 +47,9 @@ call plug#begin('~/.vim/plugged')
 " Experimental
   Plug 'yuttie/comfortable-motion.vim'  " Smooth scrolling
   Plug 'kien/rainbow_parentheses.vim'   " Rainbow Parentheses
-  Plug 'vim-syntastic/syntastic'        " Syntax checking
+  " Plug 'vim-syntastic/syntastic'        " Syntax checking
   Plug 'christoomey/vim-tmux-navigator' " Seamlessly navigate in vim + tmux
+  Plug 'neomake/neomake'                " Syntax Checking
 
 
 
@@ -163,6 +164,22 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 let g:syntastic_typescript_checkers = ['tslint', 'tsc']
+
+" ==================================================================================================
+" Neomake
+" ==================================================================================================
+
+autocmd! BufWritePost * Neomake         " Autorun on every write
+
+let g:neomake_serialize = 1
+let g:neomake_serialize_abort_on_error = 1
+
+  " let g:neomake_typescript_tslint_maker = {
+  " \ 'args': ['--verbose'],
+  " \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+  " \ }
+  let g:neomake_typescript_enabled_makers = ['tslint']
+  let g:neomake_javascript_enabled_makers = ['jshint']
 
 " ==================================================================================================
 " Themes (:Thematic)
