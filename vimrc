@@ -48,6 +48,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'yuttie/comfortable-motion.vim'  " Smooth scrolling
   Plug 'kien/rainbow_parentheses.vim'   " Rainbow Parentheses
   Plug 'vim-syntastic/syntastic'        " Syntax checking
+  Plug 'christoomey/vim-tmux-navigator' " Seamlessly navigate in vim + tmux
 
 
 

@@ -5,7 +5,7 @@
 
 dir=`pwd`
 backupdir=~/.dotfiles_backup
-files="bash_profile vimrc zshrc vim hushlogin"
+files="bash_profile vimrc zshrc vim hushlogin tmux.conf"
 
 echo "Creating $backupdir etc for backup of any existing dotfiles in ~"
 mkdir -p $backupdir
