@@ -2,7 +2,7 @@ set nocompatible                        " use vim not vi
 set ttyfast                             " Assume fast terminal connection (smoothens scrolling)
 
 " ==================================================================================================
-" Vim-Plug (:PlugInstall, :PlugUpdate, :PlugClean)
+" Vim-Plug (:PlugInstall, :PlugUpdate, :PlugUpgrade, :PlugClean)
 " ==================================================================================================
 
 " Autoinstall vim-plug
@@ -70,12 +70,6 @@ set mouse=a                   " Allow mouse control
 set path+=**                  " Search down into subfolders
 set wildmenu                  " Display all matching files when tab complete
 
-" Allow hjkl movement through wrapped lines
-noremap <buffer> <silent> k gk
-noremap <buffer> <silent> j gj
-noremap <buffer> <silent> 0 g0
-noremap <buffer> <silent> $ g$
-
 filetype plugin on
 
 set hlsearch        	        " Highlight searches
@@ -108,6 +102,18 @@ set timeoutlen=150
 
 " Set Enter to exit search highlighting
 nnoremap <silent> <CR> :nohlsearch<CR>
+
+" Allow hjkl movement through wrapped lines
+noremap <buffer> <silent> k gk
+noremap <buffer> <silent> j gj
+noremap <buffer> <silent> 0 g0
+noremap <buffer> <silent> $ g$
+
+" Rebind arrow keys to resize panes (and force usage of home row)
+nnoremap <Up>    :resize +2<CR>
+nnoremap <Down>  :resize -2<CR>
+nnoremap <Left>  :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
 
 " ==================================================================================================
 " CTRL+P (fuzzy search)
