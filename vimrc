@@ -80,12 +80,13 @@ set wildmenu                  " Display all matching files when tab complete
 
 filetype plugin on
 
+set nowrap                    " Don't fold lines
 set hlsearch        	        " Highlight searches
 set incsearch       	        " Do incremental searching
 set ruler           	        " Show the cursor position all the time
 set visualbell t_vb=          " Turn off error beep/flash
 set ignorecase                " Ignore case while searching
-set tabstop=2							        " Set the tabs to two spaces
+set tabstop=2							    " Set the tabs to two spaces
 set shiftwidth=2
 set expandtab
 set backspace=indent,eol,start
@@ -97,7 +98,7 @@ set hidden                    " This will go along"
 set encoding=utf-8
 set cursorline
 
-" let mapleader = ","         " Remap leader to comma"
+let mapleader = ","           " Remap leader to comma
 
 " ==================================================================================================
 " Keybindings
