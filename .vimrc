@@ -32,7 +32,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'neomake/neomake'                                          " Syntax Checking (Neovim only)
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Autocompletion engine for neovim (Neovim only)
     Plug 'mhartington/nvim-typescript'                              " Deoplete: typescript completion (Neovim only)
-    Plug 'Shougo/echodoc.vim'                                       " Show function signatures in status bar (Neovim only)
+    " Plug 'Shougo/echodoc.vim'                                       " Show function signatures in status bar (Neovim only)
   endif
 
 " Look & feel
@@ -271,11 +271,11 @@ else
   filetype plugin on
   set autoindent
   set backspace=indent,eol,start
-  set hlsearch        	        " Highlight searches
-  set incsearch       	        " Do incremental searching
-  set nocompatible                        " use vim not vi
-  set ruler           	        " Show the cursor position all the time
-  set ttyfast                             " Assume fast terminal connection (smoothens scrolling)
-  set wildmenu                  " Display all matching files during tab complete
+  set hlsearch        	                          " Highlight searches
+  set incsearch       	                          " Do incremental searching
+  set nocompatible                                " use vim not vi
+  set ruler           	                          " Show the cursor position all the time
+  set ttyfast                                     " Assume fast terminal connection (smoothens scrolling)
+  set wildmenu                                    " Display all matching files during tab complete
 endif
 
