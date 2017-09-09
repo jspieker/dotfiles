@@ -10,60 +10,54 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-" General
-  Plug 'kien/ctrlp.vim'                                         " Fuzzy file finder
-
-" Edit
-  Plug 'tpope/vim-surround'                                     " Surround selections 
-  Plug 'tpope/vim-commentary'                                   " Quick commenting
-  Plug 'tpope/vim-speeddating'                                  " Better number incrementation
-  Plug 'tpope/vim-surround'                                     " Change surrounds
+" Editing
+  Plug 'tpope/vim-surround'                                         " Surround selections 
+  Plug 'tpope/vim-commentary'                                       " Quick commenting
+  Plug 'tpope/vim-speeddating'                                      " Better number incrementation
+  Plug 'tpope/vim-surround'                                         " Change surrounds
 
 " Browsing
-  Plug 'scrooloose/nerdtree'                                    " File explorer
-  Plug 'Xuyuanp/nerdtree-git-plugin'                            " Git diff in nerdtree
-  Plug 'christoomey/vim-tmux-navigator'                         " Seamlessly navigate in vim + tmux
+  Plug 'scrooloose/nerdtree'                                        " File explorer
+  Plug 'Xuyuanp/nerdtree-git-plugin'                                " Git diff in nerdtree
+  Plug 'christoomey/vim-tmux-navigator'                             " Seamlessly navigate in vim + tmux
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy finder
 
 " Git
-  Plug 'airblade/vim-gitgutter'                                 " Show git diff in sidebar
-  Plug 'tpope/vim-fugitive'                                     " Git wrapper
+  Plug 'airblade/vim-gitgutter'                                     " Show git diff in sidebar
+  Plug 'tpope/vim-fugitive'                                         " Git wrapper
 
 " Languages
-  Plug 'sheerun/vim-polyglot'                                   " Language Packs for syntax coloring
+  Plug 'sheerun/vim-polyglot'                                       " Language Packs for syntax coloring
   if (has("nvim"))
-    Plug 'neomake/neomake'                                        " Syntax Checking (Neovim only)
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion engine for neovim (Neovim only)
-    Plug 'mhartington/nvim-typescript'                            " Deoplete: typescript completion (Neovim only)
-    Plug 'Shougo/echodoc.vim'                                     " Show function signatures in status bar (Neovim only)
+    Plug 'neomake/neomake'                                          " Syntax Checking (Neovim only)
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Autocompletion engine for neovim (Neovim only)
+    Plug 'mhartington/nvim-typescript'                              " Deoplete: typescript completion (Neovim only)
+    Plug 'Shougo/echodoc.vim'                                       " Show function signatures in status bar (Neovim only)
   endif
 
 " Look & feel
-  Plug 'reedes/vim-thematic'                                    " Better theme management
-  Plug 'vim-airline/vim-airline'                                " Bottom status bar
-  Plug 'vim-airline/vim-airline-themes'                         " Airline Themes
-  Plug 'yggdroot/indentline'                                    " Show indendations
-  Plug 'lilydjwg/colorizer'                                     " Preview colors inline
-  Plug 'itchyny/vim-cursorword'                                 " Underline word below cursor
-  Plug 'NLKNguyen/papercolor-theme'                             " Color Scheme
-  Plug 'joshdick/onedark.vim'                                   " Color Scheme
-  Plug 'junegunn/seoul256.vim'                                  " Color Scheme
-  Plug 'sonph/onehalf', {'rtp': 'vim'}                          " Color Scheme
-  Plug 'jonathanfilip/vim-lucius'                               " Color Scheme
-  Plug 'rakr/vim-one'                                           " Color Scheme
+  Plug 'reedes/vim-thematic'                                        " Better theme management
+  Plug 'vim-airline/vim-airline'                                    " Bottom status bar
+  Plug 'vim-airline/vim-airline-themes'                             " Airline Themes
+  Plug 'yggdroot/indentline'                                        " Show indendations
+  Plug 'lilydjwg/colorizer'                                         " Preview colors inline
+  Plug 'itchyny/vim-cursorword'                                     " Underline word below cursor
+  Plug 'NLKNguyen/papercolor-theme'                                 " Color Scheme
+  Plug 'joshdick/onedark.vim'                                       " Color Scheme
+  Plug 'junegunn/seoul256.vim'                                      " Color Scheme
+  Plug 'jonathanfilip/vim-lucius'                                   " Color Scheme
+  Plug 'rakr/vim-one'                                               " Color Scheme
 
 " Experimental
-  Plug 'yuttie/comfortable-motion.vim'                          " Smooth scrolling
-  Plug 'kien/rainbow_parentheses.vim'                           " Rainbow Parentheses
+  Plug 'yuttie/comfortable-motion.vim'                              " Smooth scrolling
+  Plug 'kien/rainbow_parentheses.vim'                               " Rainbow Parentheses
 
 " Probably deprecated
-  " Plug 'ajh17/VimCompletesMe'                                 " Autocompletion
-  " Plug 'vim-syntastic/syntastic'                              " Syntax checking
-  " Plug 'Quramy/tsuquyomi', { 'do': 'make' }                   " Typescript plugin
-  " Plug 'Shougo/vimproc.vim', { 'do': 'make' }                 " Typescript plugin
+  " Plug 'vim-syntastic/syntastic'                                  " Syntax checking
 
 " To be added
-  " Plug 'mbbill/undotree'                                      " Visualize last edits
-  " Plug 'valloric/youcompleteme'                               " Autocompletion
+  " Plug 'mbbill/undotree'                                          " Visualize last edits
+  " Plug 'valloric/youcompleteme'                                   " Autocompletion
 call plug#end()
 
 " ==================================================================================================
@@ -115,23 +109,40 @@ nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 
+" Rebind ctrl+p to fzf fuzzy finder
+nnoremap <c-p> :FZF<cr>
+
 " ==================================================================================================
-" CTRL+P (fuzzy search)
+" FZF Fuzzy file finder
 " ==================================================================================================
 
-if (has("nvim"))
-  let g:ctrlp_map = '<c-p>'
-  let g:ctrlp_cmd = 'CtrlP' 
-  
-  " Ignore certain files
-  set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-  
-  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-  let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-    \ 'file': '\v\.(exe|so|dll)$',
-    \ }
-endif
+" How to open marked file
+let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+
+" Enable search history with ctrl+n and ctrl+p
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" fzf popup layout
+let g:fzf_layout = { 'up': '~40%' }
 
 " ==================================================================================================
 " Nerdtree
@@ -230,11 +241,6 @@ if (has("nvim"))
     \    'colorscheme': 'seoul256-light',
     \    'airline-theme': 'papercolor',
     \    'background': 'light',
-    \    'laststatus': 2,
-    \    },
-    \  'onehalf': {
-    \    'colorscheme': 'onehalflight',
-    \    'airline-theme': 'onehalfdark',
     \    'laststatus': 2,
     \    },
     \  'one_light': {

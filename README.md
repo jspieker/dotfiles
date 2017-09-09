@@ -13,7 +13,7 @@ Run `sh installdotfiles.sh` to backup your existing dotfiles and replace them wi
 * Install Apple command line tools with `xcode-select --install`
 * Install pip3 with `brew install python3`
 * Install python-neovim support with `pip3 install neovim`
-* You might have to run `:UpgradeRemotePlugins` from your `.vimrc` afterwards.
+* You might have to run `:UpgradeRemotePlugins` after `:PlugInstall` from your `.vimrc` afterwards.
 
 # Dependencies for linux
 
@@ -24,7 +24,7 @@ Run `sh installdotfiles.sh` to backup your existing dotfiles and replace them wi
   * If it came preinstalled you might need to run `pip3 install --upgrade pip`
 * Install setuptools with `sudo pip3 install setuptools`
 * Install python-neovim support with `sudo pip3 install neovim`
-* You might have to run `:UpgradeRemotePlugins` from your `.vimrc` afterwards.
+* You might have to run `:UpgradeRemotePlugins` after `:PlugInstall` from your `.vimrc` afterwards.
 
 
 
