@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
 " Browsing
   Plug 'scrooloose/nerdtree'                                    " File explorer
   Plug 'Xuyuanp/nerdtree-git-plugin'                            " Git diff in nerdtree
+  Plug 'christoomey/vim-tmux-navigator'                         " Seamlessly navigate in vim + tmux
 
 " Git
   Plug 'airblade/vim-gitgutter'                                 " Show git diff in sidebar
@@ -32,10 +33,12 @@ call plug#begin('~/.vim/plugged')
 
 " Languages
   Plug 'sheerun/vim-polyglot'                                   " Language Packs for syntax coloring
-  Plug 'neomake/neomake'                                        " Syntax Checking (Neovim only)
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion engine for neovim (Neovim only)
-  Plug 'mhartington/nvim-typescript'                            " Deoplete: typescript completion (Neovim only)
-  Plug 'Shougo/echodoc.vim'                                     " Show function signatures in status bar (Neovim only)
+  if (has("nvim"))
+    Plug 'neomake/neomake'                                        " Syntax Checking (Neovim only)
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocompletion engine for neovim (Neovim only)
+    Plug 'mhartington/nvim-typescript'                            " Deoplete: typescript completion (Neovim only)
+    Plug 'Shougo/echodoc.vim'                                     " Show function signatures in status bar (Neovim only)
+  endif
 
 " Look & feel
   Plug 'reedes/vim-thematic'                                    " Better theme management
@@ -54,7 +57,6 @@ call plug#begin('~/.vim/plugged')
 " Experimental
   Plug 'yuttie/comfortable-motion.vim'                          " Smooth scrolling
   Plug 'kien/rainbow_parentheses.vim'                           " Rainbow Parentheses
-  Plug 'christoomey/vim-tmux-navigator'                         " Seamlessly navigate in vim + tmux
 
 " Probably deprecated
   " Plug 'ajh17/VimCompletesMe'                                 " Autocompletion
@@ -128,18 +130,19 @@ nnoremap <Right> :vertical resize -2<CR>
 " CTRL+P (fuzzy search)
 " ==================================================================================================
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP' 
-
-" Ignore certain files
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
-
+if (has("nvim"))
+  let g:ctrlp_map = '<c-p>'
+  let g:ctrlp_cmd = 'CtrlP' 
+  
+  " Ignore certain files
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+  
+  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+  let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ }
+endif
 
 " ==================================================================================================
 " Nerdtree
@@ -190,10 +193,11 @@ let g:NERDTreeIndicatorMapCustom = {
 " Neomake (for linter)
 " ==================================================================================================
 
-autocmd! BufWritePost * Neomake         " Autorun on every write
+if (has("nvim"))
+  autocmd! BufWritePost * Neomake         " Autorun on every write
 
-let g:neomake_serialize = 1
-let g:neomake_serialize_abort_on_error = 1
+  let g:neomake_serialize = 1
+  let g:neomake_serialize_abort_on_error = 1
 
   " let g:neomake_typescript_tslint_maker = {
   " \ 'args': ['--verbose'],
@@ -201,18 +205,20 @@ let g:neomake_serialize_abort_on_error = 1
   " \ }
   let g:neomake_typescript_enabled_makers = ['tslint']
   let g:neomake_javascript_enabled_makers = ['jshint']
+endif
 
 " ==================================================================================================
 " Deoplete (Autocompletion)
 " ==================================================================================================
 
-" Disable the preview window
-set completeopt-=preview
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_debug = 1
-let g:deoplete#enable_profile = 1
-call deoplete#enable_logging('DEBUG', '/PATH_TO/deoplete.log')
+if (has("nvim"))
+  set completeopt-=preview                " Disable the preview window
+  
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#enable_debug = 1
+  let g:deoplete#enable_profile = 1
+  call deoplete#enable_logging('DEBUG', '/PATH_TO/deoplete.log')
+endif
 
 " ==================================================================================================
 " UI & Themes (:Thematic)
@@ -227,53 +233,45 @@ highlight nonText ctermbg=NONE
 set fillchars=vert:│
 
 let g:airline_powerline_fonts = 1               " Allow vim-airline to use Powerline Fonts
-let g:thematic#theme_name = 'atom_one_light'  " Default Theme
-let g:solarized_termcolors=256
 
-let g:thematic#themes = {
-      \  'atom_one_dark': {
-      \    'colorscheme': 'onedark',
-      \    'airline-theme': 'onedark',
-      \    'background': 'dark',
-      \    'laststatus': 2,
-      \    'typeface': 'Menlo for Powerline',
-      \    'font-size': 16,
-      \    'linespace': 2,
-      \    },
-      \  'papercolor_light': {
-      \    'colorscheme': 'PaperColor',
-      \    'airline-theme': 'papercolor',
-      \    'background': 'light',
-      \    'laststatus': 2,
-      \    'typeface': 'Menlo for Powerline',
-      \    'font-size': 16,
-      \    'linespace': 2,
-      \    },
-      \  'seoul_light': {
-      \    'colorscheme': 'seoul256-light',
-      \    'airline-theme': 'papercolor',
-      \    'background': 'light',
-      \    'laststatus': 2,
-      \    'typeface': 'Menlo for Powerline',
-      \    'font-size': 16,
-      \    'linespace': 2,
-      \    },
-      \  'onehalf': {
-      \    'colorscheme': 'onehalflight',
-      \    'airline-theme': 'onehalfdark',
-      \    'laststatus': 2,
-      \    'typeface': 'Menlo for Powerline',
-      \    'font-size': 16,
-      \    'linespace': 2,
-      \    },
-      \  'atom_one_light': {
-      \    'colorscheme': 'one',
-      \    'airline-theme': 'one',
-      \    'laststatus': 2,
-      \    'typeface': 'Menlo for Powerline',
-      \    'font-size': 16,
-      \    'linespace': 2,
-      \    },
-      \}
+if (has("termguicolors"))
+  set termguicolors
+endif 
+
+if (has("nvim"))
+  let g:thematic#theme_name = 'one_light'       " Default Theme
+  let g:thematic#themes = {
+    \  'one_dark': {
+    \    'colorscheme': 'onedark',
+    \    'airline-theme': 'onedark',
+    \    'background': 'dark',
+    \    'laststatus': 2,
+    \    },
+    \  'papercolor_light': {
+    \    'colorscheme': 'PaperColor',
+    \    'airline-theme': 'papercolor',
+    \    'background': 'light',
+    \    'laststatus': 2,
+    \    },
+    \  'seoul_light': {
+    \    'colorscheme': 'seoul256-light',
+    \    'airline-theme': 'papercolor',
+    \    'background': 'light',
+    \    'laststatus': 2,
+    \    },
+    \  'onehalf': {
+    \    'colorscheme': 'onehalflight',
+    \    'airline-theme': 'onehalfdark',
+    \    'laststatus': 2,
+    \    },
+    \  'one_light': {
+    \    'colorscheme': 'one',
+    \    'airline-theme': 'one',
+    \    'laststatus': 2,
+    \    },
+  \}
+else
+  colorscheme onedark
+endif
 
 
