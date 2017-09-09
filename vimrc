@@ -44,6 +44,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'joshdick/onedark.vim'                                   " Color Scheme
   Plug 'junegunn/seoul256.vim'                                  " Color Scheme
   Plug 'sonph/onehalf', {'rtp': 'vim'}                          " Color Scheme
+  Plug 'jonathanfilip/vim-lucius'                               " Color Scheme
+  Plug 'rakr/vim-one'                                           " Color Scheme
   Plug 'vim-airline/vim-airline'                                " Bottom status bar
   Plug 'yggdroot/indentline'                                    " Show indendations
   Plug 'lilydjwg/colorizer'                                     " Preview colors inline
@@ -225,10 +227,11 @@ highlight nonText ctermbg=NONE
 set fillchars=vert:│
 
 let g:airline_powerline_fonts = 1               " Allow vim-airline to use Powerline Fonts
-let g:thematic#theme_name = 'papercolor_light'  " Default Theme
+let g:thematic#theme_name = 'atom_one_light'  " Default Theme
+let g:solarized_termcolors=256
 
 let g:thematic#themes = {
-      \  'onedark': {
+      \  'atom_one_dark': {
       \    'colorscheme': 'onedark',
       \    'airline-theme': 'onedark',
       \    'background': 'dark',
@@ -258,6 +261,14 @@ let g:thematic#themes = {
       \  'onehalf': {
       \    'colorscheme': 'onehalflight',
       \    'airline-theme': 'onehalfdark',
+      \    'laststatus': 2,
+      \    'typeface': 'Menlo for Powerline',
+      \    'font-size': 16,
+      \    'linespace': 2,
+      \    },
+      \  'atom_one_light': {
+      \    'colorscheme': 'one',
+      \    'airline-theme': 'one',
       \    'laststatus': 2,
       \    'typeface': 'Menlo for Powerline',
       \    'font-size': 16,
