@@ -49,10 +49,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'rakr/vim-one'                                               " Color Scheme
 
 " Experimental
-  Plug 'yuttie/comfortable-motion.vim'                              " Smooth scrolling
+  Plug 'terryma/vim-smooth-scroll'                                  " Smooth scroll
   Plug 'kien/rainbow_parentheses.vim'                               " Rainbow Parentheses
 
 " Probably deprecated
+  " Plug 'yuttie/comfortable-motion.vim'                            " Physics based smooth scrolling
   " Plug 'vim-syntastic/syntastic'                                  " Syntax checking
 
 " To be added
@@ -111,6 +112,12 @@ nnoremap <Right> :vertical resize -2<CR>
 
 " Rebind ctrl+p to fzf fuzzy finder
 nnoremap <c-p> :FZF<cr>
+
+" Smooth scrolling (distance, duration [in ms], speed)
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 15, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 15, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 15, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 15, 4)<CR>
 
 " ==================================================================================================
 " FZF Fuzzy file finder
