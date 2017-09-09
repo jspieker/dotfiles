@@ -1,11 +1,8 @@
-set nocompatible                        " use vim not vi
-set ttyfast                             " Assume fast terminal connection (smoothens scrolling)
-
 " ==================================================================================================
 " Vim-Plug (:PlugInstall, :PlugUpdate, :PlugUpgrade, :PlugClean)
 " ==================================================================================================
 
-" Autoinstall vim-plug
+" Autoinstall vim-plug if its not already installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -14,7 +11,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 " General
-  Plug 'kien/ctrlp.vim'                                         " Fuzzy finder
+  Plug 'kien/ctrlp.vim'                                         " Fuzzy file finder
 
 " Edit
   Plug 'tpope/vim-surround'                                     " Surround selections 
@@ -42,17 +39,17 @@ call plug#begin('~/.vim/plugged')
 
 " Look & feel
   Plug 'reedes/vim-thematic'                                    " Better theme management
+  Plug 'vim-airline/vim-airline'                                " Bottom status bar
   Plug 'vim-airline/vim-airline-themes'                         " Airline Themes
+  Plug 'yggdroot/indentline'                                    " Show indendations
+  Plug 'lilydjwg/colorizer'                                     " Preview colors inline
+  Plug 'itchyny/vim-cursorword'                                 " Underline word below cursor
   Plug 'NLKNguyen/papercolor-theme'                             " Color Scheme
   Plug 'joshdick/onedark.vim'                                   " Color Scheme
   Plug 'junegunn/seoul256.vim'                                  " Color Scheme
   Plug 'sonph/onehalf', {'rtp': 'vim'}                          " Color Scheme
   Plug 'jonathanfilip/vim-lucius'                               " Color Scheme
   Plug 'rakr/vim-one'                                           " Color Scheme
-  Plug 'vim-airline/vim-airline'                                " Bottom status bar
-  Plug 'yggdroot/indentline'                                    " Show indendations
-  Plug 'lilydjwg/colorizer'                                     " Preview colors inline
-  Plug 'itchyny/vim-cursorword'                                 " Underline word below cursor
 
 " Experimental
   Plug 'yuttie/comfortable-motion.vim'                          " Smooth scrolling
@@ -80,22 +77,14 @@ set linebreak                 " Allow word wrapping
 " set fo=tcrwa textwidth=80   " Autoformats display line to new line
 set mouse=a                   " Allow mouse control
 set path+=**                  " Search down into subfolders
-set wildmenu                  " Display all matching files when tab complete
-
-filetype plugin on
 
 set nowrap                    " Don't fold lines
-set hlsearch        	        " Highlight searches
-set incsearch       	        " Do incremental searching
-set ruler           	        " Show the cursor position all the time
 set visualbell t_vb=          " Turn off error beep/flash
 set ignorecase                " Ignore case while searching
 set tabstop=2							    " Set the tabs to two spaces
 set shiftwidth=2
 set expandtab
-set backspace=indent,eol,start
 set completeopt=longest,menu,preview
-set autoindent
 set scrolloff=5               " Keep at least x lines above/below
 set sidescrolloff=5           " Keep at least x lines left/right
 set hidden                    " This will go along"
@@ -175,21 +164,6 @@ let g:NERDTreeIndicatorMapCustom = {
 \ }
 
 " ==================================================================================================
-" Syntastic settings
-" ==================================================================================================
-
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-
-" let g:syntastic_typescript_checkers = ['tslint', 'tsc']
-
-" ==================================================================================================
 " Neomake (for linter)
 " ==================================================================================================
 
@@ -224,7 +198,6 @@ endif
 " UI & Themes (:Thematic)
 " ==================================================================================================
 
-syntax on                                       " Enable syntax highlighting
 let base16colorspace=256
 let g:indentLine_char = '│'                     " Use this char for indentations (NERDTree, indentations,...)
 set noshowmode                                  " Disable --INSERT--... labels in favor of airline
@@ -274,4 +247,22 @@ else
   colorscheme onedark
 endif
 
+
+" ==================================================================================================
+" Vim only settings, deprecated with neovim (see https://neovim.io/doc/user/vim_diff.html)
+" ==================================================================================================
+
+if (has("nvim"))
+else
+  syntax on                                       " Enable syntax highlighting
+  filetype plugin on
+  set autoindent
+  set backspace=indent,eol,start
+  set hlsearch        	        " Highlight searches
+  set incsearch       	        " Do incremental searching
+  set nocompatible                        " use vim not vi
+  set ruler           	        " Show the cursor position all the time
+  set ttyfast                             " Assume fast terminal connection (smoothens scrolling)
+  set wildmenu                  " Display all matching files during tab complete
+endif
 
