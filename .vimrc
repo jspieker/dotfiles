@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'                                       " Quick commenting
   Plug 'tpope/vim-speeddating'                                      " Better number incrementation
   Plug 'tpope/vim-surround'                                         " Change surrounds
+  Plug 'cohama/lexima.vim'                                          " Auto-close brackets
 
 " Browsing
   Plug 'scrooloose/nerdtree'                                        " File explorer
@@ -37,8 +38,9 @@ call plug#begin('~/.vim/plugged')
 
 " Look & feel
   Plug 'reedes/vim-thematic'                                        " Better theme management
-  Plug 'vim-airline/vim-airline'                                    " Bottom status bar
+  Plug 'vim-airline/vim-airline'                                    " Airline: Bottom status bar
   Plug 'vim-airline/vim-airline-themes'                             " Airline Themes
+  " Plug 'itchyny/lightline.vim'                                    " Alternative to Airline
   Plug 'yggdroot/indentline'                                        " Show indendations
   Plug 'lilydjwg/colorizer'                                         " Preview colors inline
   Plug 'itchyny/vim-cursorword'                                     " Underline word below cursor
@@ -114,10 +116,10 @@ nnoremap <Right> :vertical resize -2<CR>
 nnoremap <c-p> :FZF<cr>
 
 " Smooth scrolling (distance, duration [in ms], speed)
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 15, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 15, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 15, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 15, 4)<CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
 
 " ==================================================================================================
 " FZF Fuzzy file finder
@@ -149,7 +151,7 @@ let g:fzf_colors =
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " fzf popup layout
-let g:fzf_layout = { 'up': '~40%' }
+let g:fzf_layout = { 'down': '~40%' }
 
 " ==================================================================================================
 " Nerdtree
