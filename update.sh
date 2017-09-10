@@ -3,11 +3,13 @@
 # Backup existing dotfiles in ~ #
 #################################
 
-echo "--------------------------------------------------------------------------------"
 
 cd "$(dirname "${BASH_SOURCE}")";
 
+echo "--------------------------------------------------------------------------------"
+echo "Updating git repository"
 git pull -q origin master;
+echo "--------------------------------------------------------------------------------"
 
 function syncDotfiles() {
   rsync --exclude ".git/" \
@@ -23,7 +25,7 @@ function syncDotfiles() {
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
         syncDotfiles;
 else
-  read -p "Do you want to back up existing files in your home directory? (y/n) (n to abort) " -n 1;
+  read -p "Do you want to back up existing files in your home directory? (y/n) " -n 1;
   echo "";
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     dir=`pwd`
@@ -48,7 +50,7 @@ else
     echo "--------------------------------------------------------------------------------"
     echo "rsyncing dotfiles to ~"
     echo "--------------------------------------------------------------------------------"
-    syncDotfiles;
   fi;
 fi;
+syncDotfiles;
 unset syncDotfiles;
