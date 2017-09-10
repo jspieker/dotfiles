@@ -11,7 +11,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 " Editing
-  Plug 'tpope/vim-surround'                                         " Surround selections 
+  Plug 'tpope/vim-surround'                                         " Surround selections
   Plug 'tpope/vim-commentary'                                       " Quick commenting
   Plug 'tpope/vim-speeddating'                                      " Better number incrementation
   Plug 'tpope/vim-surround'                                         " Change surrounds
@@ -160,7 +160,7 @@ let g:fzf_layout = { 'down': '~40%' }
 let NERDTreeMinimalUI = 1     " Suppress 'Press ? for help' message
 
 " Toggle NERDTree
-map <F5> :NERDTreeToggle<CR> 
+map <F5> :NERDTreeToggle<CR>
 
 " Autoclose NERDTree if it is last open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -207,12 +207,55 @@ endif
 
 if (has("nvim"))
   set completeopt-=preview                " Disable the preview window
-  
+
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#enable_debug = 1
   let g:deoplete#enable_profile = 1
   call deoplete#enable_logging('DEBUG', '/PATH_TO/deoplete.log')
 endif
+
+" ==================================================================================================
+" Airline
+" ==================================================================================================
+
+" Allow vim-airline to use Powerline Fonts
+let g:airline_powerline_fonts = 1
+
+" Check whether it exists as to avoid accidentally overwriting its contents.
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" Overwrite some airline icons
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '│'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '│'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = '│'
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = '│'
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
 
 " ==================================================================================================
 " UI & Themes (:Thematic)
@@ -225,11 +268,9 @@ highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 set fillchars=vert:│
 
-let g:airline_powerline_fonts = 1               " Allow vim-airline to use Powerline Fonts
-
 if (has("termguicolors"))
   set termguicolors
-endif 
+endif
 
 if (has("nvim"))
   let g:thematic#theme_name = 'one_light'       " Default Theme
@@ -261,7 +302,6 @@ if (has("nvim"))
 else
   colorscheme onedark
 endif
-
 
 " ==================================================================================================
 " Vim only settings, deprecated with neovim (see https://neovim.io/doc/user/vim_diff.html)

@@ -30,16 +30,16 @@ else
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     dir=`pwd`
     backupdir=~/.dotfiles_backup
-    
+
     rm -rf $backupdir
     mkdir -p $backupdir
-    
+
     cd $dir
-    
+
     echo "--------------------------------------------------------------------------------"
     echo "Copying dotfiles to be updated from ~ to $backupdir"
     echo "--------------------------------------------------------------------------------"
-    
+
     for i in * .[^.]*; do
         if [ -e ~/$i ] && [ "$i" != "update.sh" ]
         then
