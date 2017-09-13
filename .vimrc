@@ -19,9 +19,13 @@ call plug#begin('~/.vim/plugged')
 
 " Browsing
   Plug 'scrooloose/nerdtree'                                        " File explorer
-  Plug 'Xuyuanp/nerdtree-git-plugin'                                " Git diff in nerdtree
+    Plug 'Xuyuanp/nerdtree-git-plugin'                                " Git diff in nerdtree
+    Plug 'low-ghost/nerdtree-fugitive'                                " Gt functionality in nerdtree (dependent on vim-fugitive)
+  Plug 'easymotion/vim-easymotion'                                  " Improve text navigation
   Plug 'christoomey/vim-tmux-navigator'                             " Seamlessly navigate in vim + tmux
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy finder
+    Plug 'junegunn/fzf.vim'                                           " Additional commands for fzf in vim
+    Plug 'vim-scripts/ag.vim'                                       " Use ag (grepper) with fzf
 
 " Git
   Plug 'airblade/vim-gitgutter'                                     " Show git diff in sidebar
@@ -74,6 +78,7 @@ set linebreak                 " Allow word wrapping
 " set fo=tcrwa textwidth=80   " Autoformats display line to new line
 set mouse=a                   " Allow mouse control
 set path+=**                  " Search down into subfolders
+set clipboard+=unnamedplus    " Yank to system clipboard
 
 set nowrap                    " Don't fold lines
 set visualbell t_vb=          " Turn off error beep/flash
@@ -121,6 +126,26 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
 
+
+" ==================================================================================================
+" Easymotion
+" ==================================================================================================
+
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
 " ==================================================================================================
 " FZF Fuzzy file finder
 " ==================================================================================================
@@ -158,6 +183,8 @@ let g:fzf_layout = { 'down': '~40%' }
 " ==================================================================================================
 
 let NERDTreeMinimalUI = 1     " Suppress 'Press ? for help' message
+let NERDTreeShowHidden = 1    " Always show hidden files (toggle with I)
+let NERDTreeShowLineNumbers=1 " Show line numbers
 
 " Toggle NERDTree
 map <F5> :NERDTreeToggle<CR>
