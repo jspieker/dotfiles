@@ -14,13 +14,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-surround'                                         " Surround selections
   Plug 'tpope/vim-commentary'                                       " Quick commenting
   Plug 'tpope/vim-speeddating'                                      " Better number incrementation
-  Plug 'tpope/vim-surround'                                         " Change surrounds
   Plug 'cohama/lexima.vim'                                          " Auto-close brackets
 
 " Browsing
   Plug 'scrooloose/nerdtree'                                        " File explorer
     Plug 'Xuyuanp/nerdtree-git-plugin'                                " Git diff in nerdtree
-    Plug 'low-ghost/nerdtree-fugitive'                                " Gt functionality in nerdtree (dependent on vim-fugitive)
+    Plug 'low-ghost/nerdtree-fugitive'                                " Git functionality in nerdtree (dependent on vim-fugitive)
   Plug 'easymotion/vim-easymotion'                                  " Improve text navigation
   Plug 'christoomey/vim-tmux-navigator'                             " Seamlessly navigate in vim + tmux
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy finder
@@ -55,7 +54,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'rakr/vim-one'                                               " Color Scheme
 
 " Experimental
-  Plug 'terryma/vim-smooth-scroll'                                  " Smooth scroll
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'joeytwiddle/sexy_scroller.vim'                              " Smooth scrolling
   Plug 'kien/rainbow_parentheses.vim'                               " Rainbow Parentheses
 
 " Probably deprecated
@@ -92,6 +92,7 @@ set sidescrolloff=5           " Keep at least x lines left/right
 set hidden                    " This will go along"
 set encoding=utf-8
 set cursorline
+set lazyredraw
 
 let mapleader = ","           " Remap leader to comma
 
@@ -101,6 +102,9 @@ let mapleader = ","           " Remap leader to comma
 
 :imap jk <Esc>
 set timeoutlen=150
+
+" Autocomplete with fuzzy search
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Set Enter to exit search highlighting
 nnoremap <silent> <CR> :nohlsearch<CR>
@@ -119,13 +123,6 @@ nnoremap <Right> :vertical resize -2<CR>
 
 " Rebind ctrl+p to fzf fuzzy finder
 nnoremap <c-p> :FZF<cr>
-
-" Smooth scrolling (distance, duration [in ms], speed)
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
-
 
 " ==================================================================================================
 " Easymotion
@@ -245,8 +242,7 @@ endif
 " Airline
 " ==================================================================================================
 
-" Allow vim-airline to use Powerline Fonts
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1             " Allow vim-airline to use Powerline Fonts
 
 " Check whether it exists as to avoid accidentally overwriting its contents.
 if !exists('g:airline_symbols')
