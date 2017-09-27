@@ -231,11 +231,7 @@ endif
 
 if (has("nvim"))
   set completeopt-=preview                " Disable the preview window
-
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#enable_debug = 1
-  let g:deoplete#enable_profile = 1
-  call deoplete#enable_logging('DEBUG', '/PATH_TO/deoplete.log')
 endif
 
 " ==================================================================================================
