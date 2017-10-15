@@ -35,9 +35,8 @@ call plug#begin('~/.vim/plugged')
   if (has("nvim"))
     Plug 'neomake/neomake'                                          " Syntax Checking (Neovim only)
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Autocompletion engine for neovim (Neovim only)
-    Plug 'Shougo/echodoc.vim'                                       " Show function signatures in status bar (Neovim only)
     Plug 'mhartington/nvim-typescript'                              " Deoplete: typescript completion (Neovim only)
-      Plug 'HerringtonDarkholme/yats.vim'                           " Typescript syntax files
+    " Plug 'Shougo/echodoc.vim'                                       " Show function signatures in status bar (Neovim only)
   endif
 
 " Look & feel
@@ -80,7 +79,6 @@ set linebreak                 " Allow word wrapping
 set mouse=a                   " Allow mouse control
 set path+=**                  " Search down into subfolders
 set clipboard+=unnamedplus    " Yank to system clipboard
-set paste
 
 set nowrap                    " Don't fold lines
 set visualbell t_vb=          " Turn off error beep/flash
@@ -236,9 +234,6 @@ if (has("nvim"))
   let g:deoplete#enable_at_startup = 1
 endif
 
-" Echodoc
-let g:echodoc_enable_at_startup = 1
-
 " ==================================================================================================
 " Airline
 " ==================================================================================================
@@ -280,6 +275,7 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
+
 
 " ==================================================================================================
 " UI & Themes (:Thematic)
@@ -325,6 +321,12 @@ if (has("nvim"))
   \}
 else
   colorscheme onedark
+endif
+
+" Fix colors in tmux
+if exists('$TMUX')
+  let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 endif
 
 " ==================================================================================================
