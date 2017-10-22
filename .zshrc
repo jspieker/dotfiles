@@ -18,6 +18,9 @@ source $ZSH/oh-my-zsh.sh
 # zsh-syntax-highlighting
 source ~/.oh-my-zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# fzf + ag configuration
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
 ###########
 # Aliases #
 ###########

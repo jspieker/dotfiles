@@ -24,7 +24,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'christoomey/vim-tmux-navigator'                             " Seamlessly navigate in vim + tmux
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy finder
     Plug 'junegunn/fzf.vim'                                           " Additional commands for fzf in vim
-    Plug 'vim-scripts/ag.vim'                                       " Use ag (grepper) with fzf
+    Plug 'mileszs/ack.vim'                                       " Use ag (grepper) with fzf
 
 " Git
   Plug 'airblade/vim-gitgutter'                                     " Show git diff in sidebar
@@ -166,6 +166,15 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " fzf popup layout
 let g:fzf_layout = { 'down': '~40%' }
+
+" Use ag instead of ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+" Don't automatically jump to first result
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
 " ==================================================================================================
 " Nerdtree
