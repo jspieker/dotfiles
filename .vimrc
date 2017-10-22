@@ -312,6 +312,12 @@ if exists('$TMUX')
   let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
 endif
 
+" GitGutter styling to use · instead of +/-
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
+
 " ==================================================================================================
 " Vim only settings, deprecated with neovim (see https://neovim.io/doc/user/vim_diff.html)
 " ==================================================================================================

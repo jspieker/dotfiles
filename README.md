@@ -2,7 +2,7 @@
 
 These are my dotfiles for a clean (neo-)vim experience. Most settings work for the regular vim (v7.4+), but some plugins (autocompletion, linting) require neovims asynchronous plugin management. [vim-plug](https://github.com/junegunn/vim-plug) is used to manage plugins and autoinstalls once you open the `.vimrc`.
 
-Run `sh update.sh` (or `./update.sh` on linux) to install above dotfiles to your home directory. During this step you can choose to back up your existing dotfiles that are to be updated to `~./dotfiles_backup`, this prompt can however be suppressed with `-f`.
+Run `sh update.sh` (or `./update.sh` on linux) to install above dotfiles to your home directory. During this step you can choose to back up your existing dotfiles that are to be updated to `~./dotfiles_backup`, this prompt can however be skipped with `-f`.
 
 # Screenshot
 ![Screenshot](https://i.imgur.com/8MYAR1u.jpg)
