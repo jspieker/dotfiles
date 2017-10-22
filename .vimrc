@@ -33,7 +33,7 @@ call plug#begin('~/.vim/plugged')
 " Languages
   Plug 'sheerun/vim-polyglot'                                       " Language Packs for syntax coloring
   if (has("nvim"))
-    Plug 'neomake/neomake'                                          " Syntax Checking (Neovim only)
+    Plug 'w0rp/ale'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Autocompletion engine for neovim (Neovim only)
     Plug 'mhartington/nvim-typescript'                              " Deoplete: typescript completion (Neovim only)
     " Plug 'Shougo/echodoc.vim'                                       " Show function signatures in status bar (Neovim only)
@@ -208,22 +208,20 @@ let g:NERDTreeIndicatorMapCustom = {
 \ }
 
 " ==================================================================================================
-" Neomake (for linter)
+" ALE (Asynchronous Lint Engine)
 " ==================================================================================================
 
-if (has("nvim"))
-  autocmd! BufWritePost * Neomake         " Autorun on every write
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-  let g:neomake_serialize = 1
-  let g:neomake_serialize_abort_on_error = 1
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-  " let g:neomake_typescript_tslint_maker = {
-  " \ 'args': ['--verbose'],
-  " \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
-  " \ }
-  let g:neomake_typescript_enabled_makers = ['tslint']
-  let g:neomake_javascript_enabled_makers = ['jshint']
-endif
+" Disable HTML Tidy linter
+let g:ale_linters = {
+ \ 'html': ['proselint', 'HTMLHint'],
+ \}
 
 " ==================================================================================================
 " Deoplete (Autocompletion)
