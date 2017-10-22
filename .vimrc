@@ -40,10 +40,7 @@ call plug#begin('~/.vim/plugged')
   endif
 
 " Look & feel
-  Plug 'reedes/vim-thematic'                                        " Better theme management
-  Plug 'vim-airline/vim-airline'                                    " Airline: Bottom status bar
-  Plug 'vim-airline/vim-airline-themes'                             " Airline Themes
-  " Plug 'itchyny/lightline.vim'                                    " Alternative to Airline
+  Plug 'itchyny/lightline.vim'
   Plug 'yggdroot/indentline'                                        " Show indendations
   Plug 'lilydjwg/colorizer'                                         " Preview colors inline
   Plug 'itchyny/vim-cursorword'                                     " Underline word below cursor
@@ -58,13 +55,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'joeytwiddle/sexy_scroller.vim'                              " Smooth scrolling
   Plug 'kien/rainbow_parentheses.vim'                               " Rainbow Parentheses
 
-" Probably deprecated
-  " Plug 'yuttie/comfortable-motion.vim'                            " Physics based smooth scrolling
-  " Plug 'vim-syntastic/syntastic'                                  " Syntax checking
-
 " To be added
   " Plug 'mbbill/undotree'                                          " Visualize last edits
-  " Plug 'valloric/youcompleteme'                                   " Autocompletion
 call plug#end()
 
 " ==================================================================================================
@@ -211,8 +203,8 @@ let g:NERDTreeIndicatorMapCustom = {
 " ALE (Asynchronous Lint Engine)
 " ==================================================================================================
 
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '▲'
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
@@ -233,92 +225,76 @@ if (has("nvim"))
 endif
 
 " ==================================================================================================
-" Airline
+" Lightline
 " ==================================================================================================
 
-let g:airline_powerline_fonts = 1             " Allow vim-airline to use Powerline Fonts
-
-" Check whether it exists as to avoid accidentally overwriting its contents.
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+if !has('gui_running')
+  set t_Co=256
 endif
 
-" Overwrite some airline icons
-" unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '│'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '│'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.maxlinenr = '㏑'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.whitespace = 'Ξ'
+let g:lightline = {
+\ 'colorscheme': 'one',
+\ 'active': {
+\   'left': [['mode', 'paste'], ['filename', 'modified']],
+\   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+\ },
+\ 'component_expand': {
+\   'linter_warnings': 'LightlineLinterWarnings',
+\   'linter_errors': 'LightlineLinterErrors',
+\   'linter_ok': 'LightlineLinterOK'
+\ },
+\ 'component_type': {
+\   'readonly': 'error',
+\   'linter_warnings': 'warning',
+\   'linter_errors': 'error'
+\ },
+\ }
 
-" powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = '│'
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = '│'
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.maxlinenr = ''
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+endfunction
 
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+endfunction
+
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓ ' : ''
+endfunction
+
+autocmd User ALELint call s:MaybeUpdateLightline()
+
+" Update and show lightline but only if it's visible (e.g., not in Goyo)
+function! s:MaybeUpdateLightline()
+  if exists('#lightline')
+    call lightline#update()
+  end
+endfunction
 
 " ==================================================================================================
-" UI & Themes (:Thematic)
+" UI & Themes
 " ==================================================================================================
 
+set background=light
+colorscheme one
 let base16colorspace=256
 let g:indentLine_char = '│'                     " Use this char for indentations (NERDTree, indentations,...)
-set noshowmode                                  " Disable --INSERT--... labels in favor of airline
+set noshowmode                                  " Disable --INSERT--... labels in favor of lightline
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 set fillchars=vert:│
 
 if (has("termguicolors"))
   set termguicolors
-endif
-
-if (has("nvim"))
-  let g:thematic#theme_name = 'one_light'       " Default Theme
-  let g:thematic#themes = {
-    \  'one_dark': {
-    \    'colorscheme': 'onedark',
-    \    'airline-theme': 'onedark',
-    \    'background': 'dark',
-    \    'laststatus': 2,
-    \    },
-    \  'papercolor_light': {
-    \    'colorscheme': 'PaperColor',
-    \    'airline-theme': 'papercolor',
-    \    'background': 'light',
-    \    'laststatus': 2,
-    \    },
-    \  'seoul_light': {
-    \    'colorscheme': 'seoul256-light',
-    \    'airline-theme': 'papercolor',
-    \    'background': 'light',
-    \    'laststatus': 2,
-    \    },
-    \  'one_light': {
-    \    'colorscheme': 'one',
-    \    'airline-theme': 'one',
-    \    'laststatus': 2,
-    \    },
-  \}
-else
-  colorscheme onedark
 endif
 
 " Fix colors in tmux
