@@ -24,7 +24,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'christoomey/vim-tmux-navigator'                             " Seamlessly navigate in vim + tmux
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy finder
     Plug 'junegunn/fzf.vim'                                           " Additional commands for fzf in vim
-    Plug 'mileszs/ack.vim'                                       " Use ag (grepper) with fzf
+    Plug 'mileszs/ack.vim'                                          " Use ag (grepper) with fzf
 
 " Git
   Plug 'airblade/vim-gitgutter'                                     " Show git diff in sidebar
@@ -36,27 +36,31 @@ call plug#begin('~/.vim/plugged')
     Plug 'w0rp/ale'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Autocompletion engine for neovim (Neovim only)
     Plug 'mhartington/nvim-typescript'                              " Deoplete: typescript completion (Neovim only)
-    " Plug 'Shougo/echodoc.vim'                                       " Show function signatures in status bar (Neovim only)
+    Plug 'Shougo/echodoc.vim'                                       " Show function signatures in status bar (Neovim only)
   endif
 
 " Look & feel
-  Plug 'itchyny/lightline.vim'
+  Plug 'itchyny/lightline.vim'                                      " Better status bar
   Plug 'yggdroot/indentline'                                        " Show indendations
   Plug 'lilydjwg/colorizer'                                         " Preview colors inline
+  Plug 'joeytwiddle/sexy_scroller.vim'                              " Smooth scrolling
   Plug 'itchyny/vim-cursorword'                                     " Underline word below cursor
-  Plug 'NLKNguyen/papercolor-theme'                                 " Color Scheme
-  Plug 'joshdick/onedark.vim'                                       " Color Scheme
-  Plug 'junegunn/seoul256.vim'                                      " Color Scheme
-  Plug 'jonathanfilip/vim-lucius'                                   " Color Scheme
-  Plug 'rakr/vim-one'                                               " Color Scheme
+  Plug 'junegunn/goyo.vim'                                          " Distraction free writing
+  Plug 'junegunn/limelight.vim'                                     " Distraction free writing: Highlight partial text only
+  Plug 'kien/rainbow_parentheses.vim'                               " Rainbow Parentheses
+
+" Color Schemes
+  Plug 'joshdick/onedark.vim'
+  Plug 'arcticicestudio/nord-vim'
 
 " Experimental
   Plug 'terryma/vim-multiple-cursors'
-  Plug 'joeytwiddle/sexy_scroller.vim'                              " Smooth scrolling
-  Plug 'kien/rainbow_parentheses.vim'                               " Rainbow Parentheses
+  Plug 'lifepillar/vim-wwdc17-theme'                                " Color Scheme
+  Plug 'lifepillar/vim-wwdc16-theme'
 
 " To be added
   " Plug 'mbbill/undotree'                                          " Visualize last edits
+
 call plug#end()
 
 " ==================================================================================================
@@ -85,6 +89,7 @@ set hidden                    " This will go along"
 set encoding=utf-8
 set cursorline
 set lazyredraw
+set wrap
 
 let mapleader = ","           " Remap leader to comma
 
@@ -225,15 +230,6 @@ let g:ale_linters = {
  \}
 
 " ==================================================================================================
-" Deoplete (Autocompletion)
-" ==================================================================================================
-
-if (has("nvim"))
-  set completeopt-=preview                " Disable the preview window
-  let g:deoplete#enable_at_startup = 1
-endif
-
-" ==================================================================================================
 " Lightline
 " ==================================================================================================
 
@@ -242,7 +238,7 @@ if !has('gui_running')
 endif
 
 let g:lightline = {
-\ 'colorscheme': 'one',
+\ 'colorscheme': 'nord',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['filename', 'modified']],
 \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
@@ -293,8 +289,10 @@ endfunction
 " UI & Themes
 " ==================================================================================================
 
-set background=light
-colorscheme one
+let g:nord_italic_comments = 1
+
+set background=dark
+colorscheme nord
 let base16colorspace=256
 let g:indentLine_char = '│'                     " Use this char for indentations (NERDTree, indentations,...)
 set noshowmode                                  " Disable --INSERT--... labels in favor of lightline
@@ -335,4 +333,3 @@ else
   set ttyfast                                     " Assume fast terminal connection (smoothens scrolling)
   set wildmenu                                    " Display all matching files during tab complete
 endif
-
