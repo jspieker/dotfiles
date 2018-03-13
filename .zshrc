@@ -5,6 +5,11 @@
 DEFAULT_USER="$USER"            # Suppress machine name in zsh
 ZSH_CUSTOM="~/.oh-my-zsh/oh-my-zsh.sh"
 
+#########
+# paths #
+#########
+export PATH="/Library/TeX/texbin:$PATH"
+
 ###########
 # antigen #
 ###########
@@ -33,7 +38,7 @@ antigen apply
 # Other #
 #########
 
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/texbin:~/.vimpkg/bin
+# export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/texbin:~/.vimpkg/bin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
