@@ -10,24 +10,6 @@ ZSH_CUSTOM="~/.oh-my-zsh/oh-my-zsh.sh"
 #########
 export PATH="/Library/TeX/texbin:$PATH"
 
-###################
-# startup message #
-###################
-function echo_color() {
-  local color="$1"
-  printf "${color}$2\033[0m\n"
-}
-echo_color "\033[0;70m" "c-f  Move forward"
-echo_color "\033[0;70m" "c-b  Move backward"
-echo_color "\033[0;70m" "c-p  Move up"
-echo_color "\033[0;70m" "c-n  Move down"
-echo_color "\033[0;70m" "c-a  Jump to beginning of line"
-echo_color "\033[0;70m" "c-e  Jump to end of line"
-echo_color "\033[0;70m" "c-d  Delete forward"
-echo_color "\033[0;70m" "c-h  Delete backward"
-echo_color "\033[0;70m" "c-k  Delete forward to end of line"
-echo_color "\033[0;70m" "c-u  Delete entire line"
-
 ###########
 # antigen #
 ###########
