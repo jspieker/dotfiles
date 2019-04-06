@@ -1,5 +1,5 @@
 " ==================================================================================================
-" Vim-Plug (:PlugInstall, :PlugUpdate, :PlugUpgrade, :PlugClean)
+" Plugins for vim-plug (:PlugInstall, :PlugUpdate, :PlugUpgrade, :PlugClean)
 " ==================================================================================================
 
 " Autoinstall vim-plug if its not already installed
@@ -11,52 +11,56 @@ endif
 
 call plug#begin('~/.vim/plugged')
 " Editing
-  Plug 'tpope/vim-surround'                                         " Surround selections
-  Plug 'tpope/vim-commentary'                                       " Quick commenting
-  Plug 'tpope/vim-speeddating'                                      " Better number incrementation
-  Plug 'cohama/lexima.vim'                                          " Auto-close brackets
+  Plug 'tpope/vim-surround'                                           " Surround selections
+  Plug 'tpope/vim-commentary'                                         " Quick commenting
+  Plug 'tpope/vim-speeddating'                                        " Better number incrementation
+  Plug 'cohama/lexima.vim'                                            " Auto-close brackets
 
-" Browsing
-  Plug 'scrooloose/nerdtree'                                        " File explorer
+" Navigation
+  Plug 'scrooloose/nerdtree'                                          " File explorer
     Plug 'Xuyuanp/nerdtree-git-plugin'                                " Git diff in nerdtree
     Plug 'low-ghost/nerdtree-fugitive'                                " Git functionality in nerdtree (dependent on vim-fugitive)
-  Plug 'easymotion/vim-easymotion'                                  " Improve text navigation
-  Plug 'christoomey/vim-tmux-navigator'                             " Seamlessly navigate in vim + tmux
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy finder
+  Plug 'easymotion/vim-easymotion'                                    " Improve text navigation
+  Plug 'christoomey/vim-tmux-navigator'                               " Seamlessly navigate in vim + tmux
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }   " Fuzzy finder
     Plug 'junegunn/fzf.vim'                                           " Additional commands for fzf in vim
-    Plug 'mileszs/ack.vim'                                          " Use ag (grepper) with fzf
+    Plug 'mileszs/ack.vim'                                            " Use ag (grepper) with fzf
 
 " Git
-  Plug 'airblade/vim-gitgutter'                                     " Show git diff in sidebar
-  Plug 'tpope/vim-fugitive'                                         " Git wrapper
+  Plug 'airblade/vim-gitgutter'                                       " Show git diff in sidebar
+  Plug 'tpope/vim-fugitive'                                           " Git wrapper
 
-" Languages
-  Plug 'sheerun/vim-polyglot'                                       " Language Packs for syntax coloring
+" Languages & Syntax
+  Plug 'sheerun/vim-polyglot'                                         " Language Packs for syntax coloring
   if (has("nvim"))
-    Plug 'w0rp/ale'
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Autocompletion engine for neovim (Neovim only)
-    Plug 'mhartington/nvim-typescript'                              " Deoplete: typescript completion (Neovim only)
-    Plug 'Shougo/echodoc.vim'                                       " Show function signatures in status bar (Neovim only)
+    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-tslint-plugin', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-stylelint', {'do': 'yarn install --frozen-lockfile'}
+    Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
   endif
 
 " Look & feel
-  Plug 'itchyny/lightline.vim'                                      " Better status bar
-  Plug 'yggdroot/indentline'                                        " Show indendations
-  Plug 'lilydjwg/colorizer'                                         " Preview colors inline
-  Plug 'joeytwiddle/sexy_scroller.vim'                              " Smooth scrolling
-  Plug 'itchyny/vim-cursorword'                                     " Underline word below cursor
-  Plug 'junegunn/goyo.vim'                                          " Distraction free writing
-  Plug 'junegunn/limelight.vim'                                     " Distraction free writing: Highlight partial text only
-  Plug 'kien/rainbow_parentheses.vim'                               " Rainbow Parentheses
+  Plug 'itchyny/lightline.vim'                                        " Better status bar
+  Plug 'yggdroot/indentline'                                          " Show indendations
+  Plug 'lilydjwg/colorizer'                                           " Preview colors inline
+  Plug 'joeytwiddle/sexy_scroller.vim'                                " Smooth scrolling
+  Plug 'itchyny/vim-cursorword'                                       " Underline word below cursor
+  Plug 'junegunn/goyo.vim'                                            " Distraction free writing
+  Plug 'junegunn/limelight.vim'                                       " Distraction free writing: Highlight partial text only
+  Plug 'kien/rainbow_parentheses.vim'                                 " Rainbow Parentheses
 
 " Color Schemes
   Plug 'joshdick/onedark.vim'
   Plug 'arcticicestudio/nord-vim'
+  Plug 'rakr/vim-one'
+  Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 
 " Experimental
-  Plug 'terryma/vim-multiple-cursors'
-  Plug 'lifepillar/vim-wwdc17-theme'                                " Color Scheme
-  Plug 'lifepillar/vim-wwdc16-theme'
+  " Plug 'terryma/vim-multiple-cursors'
 
 " To be added
   " Plug 'mbbill/undotree'                                          " Visualize last edits
@@ -67,41 +71,73 @@ call plug#end()
 " Basic settings
 " ==================================================================================================
 
-set relativenumber            " Relative line numbers
-set number                    " Activate line numbers
-set wrap                      " Allow line-breaking
-set linebreak                 " Allow word wrapping
-" set fo=tcrwa textwidth=80   " Autoformats display line to new line
-set mouse=a                   " Allow mouse control
-set path+=**                  " Search down into subfolders
-set clipboard+=unnamedplus    " Yank to system clipboard
-
-set nowrap                    " Don't fold lines
-set visualbell t_vb=          " Turn off error beep/flash
-set ignorecase                " Ignore case while searching
-set tabstop=2							    " Set the tabs to two spaces
+set relativenumber                      " Relative line numbers
+set number                              " Activate line numbers
+set nowrap                              " Prevent line-breaking
+set linebreak                           " Allow word wrapping
+" set fo=tcrwa textwidth=80             " Autoformats display line to new line
+set mouse=a                             " Allow mouse control
+set path+=**                            " Search down into subfolders
+set clipboard+=unnamedplus              " Yank to system clipboard
+set nowrap                              " Don't fold lines
+set visualbell t_vb=                    " Turn off error beep/flash
+set ignorecase                          " Ignore case while searching
+set tabstop=2                           " Set the tabs to two spaces
 set shiftwidth=2
 set expandtab
 set completeopt=longest,menu,preview
-set scrolloff=5               " Keep at least x lines above/below
-set sidescrolloff=5           " Keep at least x lines left/right
-set hidden                    " This will go along"
+set scrolloff=5                         " Keep at least x lines above/below when scrolling
+set sidescrolloff=5                     " Keep at least x lines left/right when scrolling
+set hidden                              " This will go along"
 set encoding=utf-8
 set cursorline
 set lazyredraw
-set wrap
 
-let mapleader = ","           " Remap leader to comma
+" ==================================================================================================
+" UI & Themes
+" ==================================================================================================
+
+" Show leading spaces
+highlight Conceal guibg=NONE ctermbg=NONE ctermfg=DarkGrey
+autocmd BufWinEnter,BufReadPre * setlocal conceallevel=2 concealcursor=nv
+autocmd BufWinEnter * syn match LeadingSpace /\(^ *\)\@<= / containedin=ALL conceal cchar=∙
+
+set background=light
+colorscheme one
+let base16colorspace=256
+let g:indentLine_char = ''                      " │ Use this char for indentations (NERDTree, indentations,...)
+set noshowmode                                  " Disable --INSERT--... labels in favor of lightline
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
+set fillchars=vert:│
+
+" Set color of non text characters to bg color (specifically end of line ~)
+highlight EndOfBuffer guifg=bg
+
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" Fix colors in tmux
+if exists('$TMUX')
+  let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+" GitGutter styling to use · instead of +/-
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
 
 " ==================================================================================================
 " Keybindings
 " ==================================================================================================
 
-:imap jk <Esc>
-set timeoutlen=150
+let mapleader = ","                     " Remap leader to comma
 
-" Autocomplete with fuzzy search
-imap <c-x><c-l> <plug>(fzf-complete-line)
+set timeoutlen=150
+:imap jk <Esc>
 
 " Set Enter to exit search highlighting
 nnoremap <silent> <CR> :nohlsearch<CR>
@@ -112,14 +148,50 @@ noremap <buffer> <silent> j gj
 noremap <buffer> <silent> 0 g0
 noremap <buffer> <silent> $ g$
 
-" Rebind arrow keys to resize panes (and force usage of home row)
+" Rebind arrow keys to resize panes
 nnoremap <Up>    :resize +2<CR>
 nnoremap <Down>  :resize -2<CR>
 nnoremap <Left>  :vertical resize +2<CR>
 nnoremap <Right> :vertical resize -2<CR>
 
-" Rebind ctrl+p to fzf fuzzy finder
-nnoremap <c-p> :FZF<cr>
+" COC.vim
+  " Make use of coc#refresh() for trigger completion like:
+  imap <c-space> coc#refresh()
+
+  " Use <Tab> and <S-Tab> for navigate completion list:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  " Use <enter> to confirm complete
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+  " Close preview window when completion is done.
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+
+" ==================================================================================================
+" Coc.nvim (Autocompletion)
+" ==================================================================================================
+
+" Close preview window after completion is done
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Use `gh` to show documentation in preview window
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Remap goto keys
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Show signature help while editing
+autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
 
 " ==================================================================================================
 " Easymotion
@@ -144,6 +216,21 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 " FZF Fuzzy file finder
 " ==================================================================================================
 
+" Rebind ctrl+p to fzf fuzzy finder
+nnoremap <c-p> :Files<cr>
+
+" Fuzzy find lines in the current file
+nmap <leader>/ :BLines<cr>
+
+" Fuzzy find Vim commands (like Ctrl-Shift-P in Sublime/Atom/VSC)
+nmap <leader>c :Commands<cr> 
+
+" fuzzy find text in the working directory
+nmap <leader>r :Rg
+
+" Autocomplete with fuzzy search
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
 " How to open marked file
 let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
@@ -151,6 +238,7 @@ let g:fzf_action = {
       \ 'ctrl-v': 'vsplit'
       \ }
 
+" Customize fzf colors to match color scheme
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -187,7 +275,7 @@ nnoremap <Leader>a :Ack!<Space>
 
 let NERDTreeMinimalUI = 1     " Suppress 'Press ? for help' message
 let NERDTreeShowHidden = 1    " Always show hidden files (toggle with I)
-let NERDTreeShowLineNumbers=1 " Show line numbers
+let NERDTreeShowLineNumbers=0 " Don't show line numbers
 
 " Toggle NERDTree
 map <F5> :NERDTreeToggle<CR>
@@ -214,22 +302,6 @@ let g:NERDTreeIndicatorMapCustom = {
 \ }
 
 " ==================================================================================================
-" ALE (Asynchronous Lint Engine)
-" ==================================================================================================
-
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '▲'
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
-" Disable HTML Tidy linter
-let g:ale_linters = {
- \ 'html': ['proselint', 'HTMLHint'],
- \}
-
-" ==================================================================================================
 " Lightline
 " ==================================================================================================
 
@@ -238,7 +310,7 @@ if !has('gui_running')
 endif
 
 let g:lightline = {
-\ 'colorscheme': 'nord',
+\ 'colorscheme': 'one',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['filename', 'modified']],
 \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
@@ -276,45 +348,12 @@ function! LightlineLinterOK() abort
   return l:counts.total == 0 ? '✓ ' : ''
 endfunction
 
-autocmd User ALELint call s:MaybeUpdateLightline()
-
 " Update and show lightline but only if it's visible (e.g., not in Goyo)
 function! s:MaybeUpdateLightline()
   if exists('#lightline')
     call lightline#update()
   end
 endfunction
-
-" ==================================================================================================
-" UI & Themes
-" ==================================================================================================
-
-let g:nord_italic_comments = 1
-
-set background=dark
-colorscheme nord
-let base16colorspace=256
-let g:indentLine_char = '│'                     " Use this char for indentations (NERDTree, indentations,...)
-set noshowmode                                  " Disable --INSERT--... labels in favor of lightline
-highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
-set fillchars=vert:│
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-" Fix colors in tmux
-if exists('$TMUX')
-  let &t_8f = "<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "<Esc>[48;2;%lu;%lu;%lum"
-endif
-
-" GitGutter styling to use · instead of +/-
-let g:gitgutter_sign_added = '∙'
-let g:gitgutter_sign_modified = '∙'
-let g:gitgutter_sign_removed = '∙'
-let g:gitgutter_sign_modified_removed = '∙'
 
 " ==================================================================================================
 " Vim only settings, deprecated with neovim (see https://neovim.io/doc/user/vim_diff.html)
@@ -326,10 +365,11 @@ else
   filetype plugin on
   set autoindent
   set backspace=indent,eol,start
-  set hlsearch        	                          " Highlight searches
-  set incsearch       	                          " Do incremental searching
+  set hlsearch                                    " Highlight searches
+  set incsearch                                   " Do incremental searching
   set nocompatible                                " use vim not vi
-  set ruler           	                          " Show the cursor position all the time
+  set ruler                                       " Show the cursor position all the time
   set ttyfast                                     " Assume fast terminal connection (smoothens scrolling)
   set wildmenu                                    " Display all matching files during tab complete
 endif
+

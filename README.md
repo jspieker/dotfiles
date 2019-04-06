@@ -4,9 +4,6 @@ These are my dotfiles for a clean vim experience. [vim-plug](https://github.com/
 
 Run `sh update.sh` (or `./update.sh` on linux) to install above dotfiles to your home directory. During this step you can choose to back up your existing dotfiles that are to be updated to `~./dotfiles_backup`, this prompt can however be skipped with `-f`.
 
-# Screenshot
-![Screenshot](https://i.imgur.com/8MYAR1u.jpg)
-
 # Dependencies for macos
 
 * Install [homebrew](https://brew.sh)

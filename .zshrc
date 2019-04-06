@@ -10,6 +10,9 @@ ZSH_CUSTOM="~/.oh-my-zsh/oh-my-zsh.sh"
 #########
 export PATH="/Library/TeX/texbin:$PATH"
 
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
 ###########
 # antigen #
 ###########
@@ -34,6 +37,12 @@ antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship
 # Tell Antigen that you're done.
 antigen apply
 
+#####
+# z #
+#####
+
+. /usr/local/etc/profile.d/z.sh
+
 #########
 # Other #
 #########
@@ -43,7 +52,7 @@ antigen apply
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fzf + ag configuration
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 #####################
 # spaceship (theme) #
@@ -335,3 +344,4 @@ SPACESHIP_EXIT_CODE_PREFIX="("
 SPACESHIP_EXIT_CODE_SUFFIX=") "
 SPACESHIP_EXIT_CODE_SYMBOl="✘ "
 SPACESHIP_EXIT_CODE_COLOR="red"
+fpath+=${ZDOTDIR:-~}/.zsh_functions
