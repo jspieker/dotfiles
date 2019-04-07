@@ -1,34 +1,16 @@
 # ~/.*
 
-These are my dotfiles for a clean vim experience. [vim-plug](https://github.com/junegunn/vim-plug) is used to manage plugins and automatically installs once you open the `.vimrc`.
+These are my dotfiles for a clean vim experience. [vim-plug](https://github.com/junegunn/vim-plug) is used to manage plugins and automatically installs once `.vimrc` is opened.
 
-Run `sh update.sh` (or `./update.sh` on linux) to install above dotfiles to your home directory. During this step you can choose to back up your existing dotfiles that are to be updated to `~./dotfiles_backup`, this prompt can however be skipped with `-f`.
+## Installation
 
-# Dependencies for macos
+* Install [chezmoi](https://github.com/twpayne/chezmoi) (`brew install chezmoi`).
+* Run `chezmoi init https://github.com/jspieker/dotfiles.git`
 
-* Install [homebrew](https://brew.sh)
-* Install [neovim](http://neovim.io) with `brew install neovim`
+All in one:
+`brew install neovim git htop noti the_silver_searcher tig tmux vim yarn z zsh zsh-syntax-highlighting twpayne/taps/chezmoi && brew cask install alacritty brave-browser google-chrome iterm2 visual-studio-code && chezmoi init https://github.com/jspieker/dotfiles.git`
 
-### [Deoplete autocompletion](https://github.com/Shougo/deoplete.nvim)
-* Install Apple command line tools with `xcode-select --install`
-* Install pip3 with `brew install python3`
-* Install python-neovim support with `pip3 install neovim`
-* You might have to run `:UpgradeRemotePlugins` after `:PlugInstall` from your `.vimrc` afterwards.
-
-# Dependencies for linux
-
-* Install [neovim](http://neovim.io) with `sudo apt-get install neovim`
-
-### [Deoplete autocompletion](https://github.com/Shougo/deoplete.nvim)
-* Install python3 tools with `sudo apt-get install python-dev python-pip python3-dev python3-pip`
-  * If it came preinstalled you might need to run `pip3 install --upgrade pip`
-* Install setuptools with `sudo pip3 install setuptools`
-* Install python-neovim support with `sudo pip3 install neovim`
-* You might have to run `:UpgradeRemotePlugins` after `:PlugInstall` from your `.vimrc` afterwards.
-
-
-
-# Other
+## Other
 * [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) for easy zsh plugin
   management i.e. the [agnoster](https://github.com/agnoster/agnoster-zsh-theme)
   theme.
