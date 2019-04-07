@@ -1,4 +1,4 @@
-" ==================================================================================================
+"==================================================================================================
 " Plugins for vim-plug (:PlugInstall, :PlugUpdate, :PlugUpgrade, :PlugClean)
 " ==================================================================================================
 
@@ -33,7 +33,8 @@ call plug#begin('~/.vim/plugged')
 " Languages & Syntax
   Plug 'sheerun/vim-polyglot'                                         " Language Packs for syntax coloring
   if (has("nvim"))
-    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+    Plug 'w0rp/ale'                                                   " Linting Engine
+    Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}        " Autocompletion
     Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
     Plug 'neoclide/coc-tslint-plugin', {'do': 'yarn install --frozen-lockfile'}
@@ -106,7 +107,6 @@ set background=light
 colorscheme one
 let base16colorspace=256
 let g:indentLine_char = ''                      " │ Use this char for indentations (NERDTree, indentations,...)
-set noshowmode                                  " Disable --INSERT--... labels in favor of lightline
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 set fillchars=vert:│
@@ -192,6 +192,22 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Show signature help while editing
 autocmd CursorHoldI * silent! call CocAction('showSignatureHelp')
+
+" ==================================================================================================
+" ALE (Asynchronous Lint Engine)
+" ==================================================================================================
+
+let g:ale_sign_error = '?'
+let g:ale_sign_warning = '?'
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" Disable HTML Tidy linter
+let g:ale_linters = {
+\ 'html': ['proselint', 'HTMLHint'],
+\}
 
 " ==================================================================================================
 " Easymotion
@@ -304,6 +320,8 @@ let g:NERDTreeIndicatorMapCustom = {
 " ==================================================================================================
 " Lightline
 " ==================================================================================================
+
+set noshowmode                                  " Disable --INSERT--... labels in favor of lightline
 
 if !has('gui_running')
   set t_Co=256
