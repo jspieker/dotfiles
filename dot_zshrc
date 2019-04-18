@@ -4,10 +4,8 @@
 
 DEFAULT_USER="$USER"            # Suppress machine name in zsh
 ZSH_CUSTOM="~/.oh-my-zsh/oh-my-zsh.sh"
+export LANG="en_US.UTF-8"       # fix for kitty
 
-#########
-# paths #
-#########
 export PATH="/Library/TeX/texbin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
@@ -17,7 +15,16 @@ export NVM_DIR="$HOME/.nvm"
 # aliases #
 ###########
 
+# update system
 alias sysup="brew upgrade && brew cask upgrade && yarn global upgrade --silent && chezmoi update && vim +'PlugUpgrade --sync' +qa && vim +'PlugUpdate --sync' +qa && echo 'Everything up to date!'"
+
+# safe delete
+alias trash="rmtrash"
+
+# kittens
+alias icat="kitty +kitten icat"
+alias d="kitty +kitten diff"
+alias gdiff="git difftool --no-symlinks --dir-diff"
 
 ###########
 # antigen #
