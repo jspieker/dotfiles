@@ -103,7 +103,7 @@ highlight Conceal guibg=NONE ctermbg=NONE ctermfg=DarkGrey
 autocmd BufWinEnter,BufReadPre * setlocal conceallevel=2 concealcursor=nv
 autocmd BufWinEnter * syn match LeadingSpace /\(^ *\)\@<= / containedin=ALL conceal cchar=∙
 
-set background=light
+set background=dark
 colorscheme one
 let base16colorspace=256
 let g:indentLine_char = ''                      " │ Use this char for indentations (NERDTree, indentations,...)
