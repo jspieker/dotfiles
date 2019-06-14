@@ -16,7 +16,15 @@ export NVM_DIR="$HOME/.nvm"
 ###########
 
 # update system
-alias sysup="brew upgrade && brew cask upgrade && yarn global upgrade --silent && chezmoi update && vim +'PlugUpgrade --sync' +qa && vim +'PlugUpdate --sync' +qa && echo 'Everything up to date!'"
+alias sysup="softwareupdate -i -a\
+  && mas upgrade\
+  && brew upgrade\
+  && brew cask upgrade\
+  && yarn global upgrade --silent\
+  && chezmoi update\
+  && vim +'PlugUpgrade --sync' +qa\
+  && vim +'PlugUpdate --sync' +qa\
+  && echo '\n\n\nEverything up to date!'"
 
 # safe delete
 alias trash="rmtrash"
