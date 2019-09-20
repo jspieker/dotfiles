@@ -207,6 +207,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " Disable HTML Tidy linter
 let g:ale_linters = {
 \ 'html': ['proselint', 'HTMLHint'],
+\ 'typescript': ['tslint'],
 \}
 
 " ==================================================================================================
