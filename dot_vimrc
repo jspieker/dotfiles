@@ -243,10 +243,13 @@ nmap <leader>/ :BLines<cr>
 nmap <leader>c :Commands<cr> 
 
 " fuzzy find text in the working directory
-nmap <leader>r :Rg
+nmap <leader>r :Ag
 
 " Autocomplete with fuzzy search
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Remap <leader>m to recently opened files
+nmap <silent> <leader>p :History<CR>
 
 " How to open marked file
 let g:fzf_action = {
